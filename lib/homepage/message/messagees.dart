@@ -1,7 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class Massages extends StatelessWidget {
+import '../../route/route.dart';
+
+class Massages extends StatefulWidget {
   const Massages({Key? key}) : super(key: key);
+
+  @override
+  State<Massages> createState() => _MassagesState();
+}
+
+class _MassagesState extends State<Massages> {
+  int _selectedIndex = 0;
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -417,6 +432,69 @@ class Massages extends StatelessWidget {
 
           ),
         ),
+      ),
+
+
+
+
+
+
+      bottomNavigationBar: BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            // backgroundColor: Colors.blue,
+
+            icon: InkWell(
+                onTap: () => Get.toNamed(home),
+                child: Icon(
+                  Icons.home,
+                  color: Colors.black38,
+                )),
+            label: 'Home',
+            // backgroundColor: Colors.red,
+          ),
+
+
+
+
+
+          BottomNavigationBarItem(
+            icon: InkWell(
+                onTap: () => Get.toNamed(notification),
+                child: Icon(
+                  Icons.notifications_none,
+                  color: Colors.black38,
+                )),
+            label: 'Notification',
+            // backgroundColor: Colors.purple,
+          ),
+
+          BottomNavigationBarItem(
+            icon: InkWell(
+                onTap: () => Get.toNamed(massages),
+                child: Icon(
+                  Icons.sms_outlined,
+                  color: Colors.black38,
+                )),
+            label: 'Business',
+            //backgroundColor: Colors.green,
+          ),
+
+          BottomNavigationBarItem(
+            icon: InkWell(
+              onTap: () => Get.toNamed(profile),
+              child: Icon(
+                Icons.person_rounded,
+                color: Colors.black38,
+              ),
+            ),
+            label: 'Profile',
+            // backgroundColor: Colors.pink,
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.black38,
+        onTap: _onItemTapped,
       ),
     );
   }

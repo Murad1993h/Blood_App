@@ -73,7 +73,7 @@ class _ExampolState extends State<Home> {
                           Row(
                             children: [
                               Text(
-                                "Sofia Rizvi",
+                                "Sofia Rizvi".tr,
                                 style: TextStyle(fontSize: 20),
                               ),
                             ],
@@ -101,7 +101,7 @@ class _ExampolState extends State<Home> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text("Ready to Donate"),
+                              Text("Ready to Donate".tr),
                               SizedBox(
                                 width: 4,
                               ),
@@ -119,7 +119,7 @@ class _ExampolState extends State<Home> {
                               SizedBox(
                                 width: 4,
                               ),
-                              Text("BLOOD REQUEST"),
+                              Text("BLOOD REQUEST".tr),
                             ],
                           ),
                           SizedBox(
@@ -133,7 +133,7 @@ class _ExampolState extends State<Home> {
                               SizedBox(
                                 width: 4,
                               ),
-                              Text("PREFERRED DONORS"),
+                              Text("PREFERRED DONORS".tr),
                             ],
                           ),
                           SizedBox(
@@ -147,7 +147,7 @@ class _ExampolState extends State<Home> {
                               SizedBox(
                                 width: 4,
                               ),
-                              Text("UPCOMMING EVENT"),
+                              Text("UPCOMMING EVENT".tr),
                             ],
                           ),
                           SizedBox(
@@ -161,7 +161,7 @@ class _ExampolState extends State<Home> {
                               SizedBox(
                                 width: 4,
                               ),
-                              Text("INVITE FRIENDS"),
+                              Text("INVITE FRIENDS".tr),
                             ],
                           ),
                           SizedBox(
@@ -175,7 +175,7 @@ class _ExampolState extends State<Home> {
                               SizedBox(
                                 width: 4,
                               ),
-                              Text("REWARD CARD"),
+                              Text("REWARD CARD".tr),
                             ],
                           ),
                           SizedBox(
@@ -189,14 +189,14 @@ class _ExampolState extends State<Home> {
                               SizedBox(
                                 width: 4,
                               ),
-                              Text("GIFT POSTS"),
+                              Text("GIFT POSTS".tr),
                             ],
                           ),
                           SizedBox(
                             height: 10,
                           ),
                           InkWell(
-                            onTap: (){},
+                            onTap: ()=> Get.toNamed(button),
                             child: Row(
                               //mainAxisSize:  MainAxisSize.max,
 
@@ -206,7 +206,7 @@ class _ExampolState extends State<Home> {
                                 SizedBox(
                                   width: 4,
                                 ),
-                                Text("SETTINGS"),
+                                Text("SETTINGS".tr),
                               ],
                             ),
                           ),
@@ -284,7 +284,7 @@ class _ExampolState extends State<Home> {
                               SizedBox(
                                 width: 4,
                               ),
-                              Text("RATE US"),
+                              Text("RATE US".tr),
                             ],
                           ),
                           SizedBox(
@@ -298,7 +298,7 @@ class _ExampolState extends State<Home> {
                               SizedBox(
                                 width: 4,
                               ),
-                              Text("ABOUT"),
+                              Text("ABOUT".tr),
                             ],
                           ),
                           SizedBox(
@@ -312,7 +312,7 @@ class _ExampolState extends State<Home> {
                               SizedBox(
                                 width: 4,
                               ),
-                              Text("LOGOUT"),
+                              Text("LOGOUT".tr),
                             ],
                           ),
                         ],
@@ -326,6 +326,20 @@ class _ExampolState extends State<Home> {
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
@@ -453,7 +467,7 @@ class _TwoPanelsState extends State<TwoPanels> with TickerProviderStateMixin {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Hi, Syed",
+                  "Hi, Syed".tr,
                   style: TextStyle(fontSize: 20),
                 ),
                 SizedBox(
@@ -484,7 +498,7 @@ class _TwoPanelsState extends State<TwoPanels> with TickerProviderStateMixin {
                       child: TextFormField(
                         decoration: InputDecoration(
                           border: InputBorder.none,
-                          hintText: 'Searce hear',
+                          hintText: 'Searce hear'.tr,
                           prefixIcon: Icon(Icons.search),
                         ),
                       ),
@@ -500,6 +514,10 @@ class _TwoPanelsState extends State<TwoPanels> with TickerProviderStateMixin {
                 SizedBox(
                   height: 12,
                 ),
+
+
+
+
                 Column(
                   children: [
                     Image.asset('assets/profile/img_1.png'),
@@ -509,7 +527,7 @@ class _TwoPanelsState extends State<TwoPanels> with TickerProviderStateMixin {
                           Icons.do_not_disturb_on_total_silence_rounded,
                           color: Colors.red,
                         ),
-                        Text(("10 Donor Around 12 KM"))
+                        Text("10 Donor Around 12 KM".tr)
                       ],
                     ),
                     SizedBox(
@@ -518,11 +536,11 @@ class _TwoPanelsState extends State<TwoPanels> with TickerProviderStateMixin {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Lifetime Donation"),
+                        Text("Lifetime Donation".tr),
                         TextButton(
                             onPressed: () {},
                             child: Text(
-                              "VIEW HISTORY",
+                              "VIEW HISTORY".tr,
                               style: TextStyle(color: Colors.red),
                             )),
                       ],
@@ -541,7 +559,7 @@ class _TwoPanelsState extends State<TwoPanels> with TickerProviderStateMixin {
                           width: 5,
                         ),
                         Text(
-                          "25 Times",
+                          "25 Times".tr,
                           style: TextStyle(fontSize: 23),
                         ),
                       ],
@@ -569,7 +587,7 @@ class _TwoPanelsState extends State<TwoPanels> with TickerProviderStateMixin {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'WALLET',
+                              'WALLET'.tr,
                               style: TextStyle(color: Colors.red),
                             ),
 
@@ -600,7 +618,7 @@ class _TwoPanelsState extends State<TwoPanels> with TickerProviderStateMixin {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('CREATE REQUEST'),
+                          Text('CREATE REQUEST'.tr),
 
                           SizedBox(width: 5),
                           Icon(Icons.bloodtype_outlined),
@@ -629,7 +647,7 @@ class _TwoPanelsState extends State<TwoPanels> with TickerProviderStateMixin {
                       Icons.home,
                       color: Colors.black38,
                     )),
-                label: 'Home',
+                label: 'Home'.tr,
                 // backgroundColor: Colors.red,
               ),
 
@@ -644,14 +662,9 @@ class _TwoPanelsState extends State<TwoPanels> with TickerProviderStateMixin {
                       Icons.notifications_none,
                       color: Colors.black38,
                     )),
-                label: 'Notification',
+                label: 'Notification'.tr,
                 // backgroundColor: Colors.purple,
               ),
-
-
-
-
-
 
               BottomNavigationBarItem(
                 icon: InkWell(
@@ -660,7 +673,7 @@ class _TwoPanelsState extends State<TwoPanels> with TickerProviderStateMixin {
                       Icons.sms_outlined,
                       color: Colors.black38,
                     )),
-                label: 'Business',
+                label: 'Business'.tr,
                 //backgroundColor: Colors.green,
               ),
 
@@ -672,7 +685,7 @@ class _TwoPanelsState extends State<TwoPanels> with TickerProviderStateMixin {
                     color: Colors.black38,
                   ),
                 ),
-                label: 'Profile',
+                label: 'Profile'.tr,
                 // backgroundColor: Colors.pink,
               ),
             ],

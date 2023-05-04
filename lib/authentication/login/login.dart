@@ -36,10 +36,7 @@ class _LogInState extends State<LogIn> {
                       ),
                     ),
                     //InkWell(child: Text("Sign in to continue.")),
-                    TextButton(
-                      onPressed: () => Get.toNamed(onbordings),
-                      child: Text("Log in your account.".tr,style: TextStyle(fontSize: 15,color: Colors.black38),),
-                    ),
+                    Text("Log in your account.".tr,style: TextStyle(fontSize: 15,color: Colors.black38),),
                     const SizedBox(
                       height: 25,
                     ),
@@ -142,7 +139,7 @@ class _LogInState extends State<LogIn> {
                             });
                           },
                         ),
-                        Text("Remember me",style: TextStyle(color: Colors.black38),),
+                        Text("Remember me".tr,style: TextStyle(color: Colors.black38),),
                         TextButton(
                           onPressed: () => Get.toNamed(forgotpassword),
                           child: Text("FORGOTE PASSWORD".tr,style: TextStyle(color: Colors.black38)),
@@ -173,7 +170,7 @@ class _LogInState extends State<LogIn> {
                     Padding(
                       padding: const EdgeInsets.only(left: 70),
                       child: Row(children: [
-                        Text("Don't have an account yet?"),
+                        Text("Don't have an account yet?".tr),
                         TextButton(
                           onPressed: () => Get.toNamed(signup),
                           child: Text("Signup".tr,style: TextStyle(color: Colors.red),)

@@ -101,7 +101,7 @@ class _OnbordingsState extends State<Onbordings> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('GET STARTED'),
+                  Text('GET STARTED'.tr),
 
                   SizedBox(width: 5),
                   Icon(
@@ -113,13 +113,16 @@ class _OnbordingsState extends State<Onbordings> {
               ),
             ),
           ),
+
+
         ],
       ),
     );
   }
 
   Container buildDot(int index, BuildContext context) {
-    return Container(
+    return
+      Container(
       height: 10,
       width: currentIndex == index ? 25 : 10,
       margin: EdgeInsets.only(right: 5),
@@ -129,6 +132,7 @@ class _OnbordingsState extends State<Onbordings> {
       ),
     );
   }
+
 }
 
 class UnbordingContent {
@@ -142,11 +146,11 @@ class UnbordingContent {
 
 List<UnbordingContent> contents = [
   UnbordingContent(
-      title: 'GIVE the Life',
+      title: 'GIVE the Life'.tr,
       image: 'assets/profile/donor.png',
-      discription: "Donate Blood and Save a Life today "),
+      discription: "Donate Blood and Save a Life today ".tr),
   UnbordingContent(
-      title: 'Blood for Life',
+      title: 'Blood for Life'.tr,
       image: ('assets/profile/img_1.png'),
-      discription: "Connecting donors with those in need "),
+      discription: "Connecting donors with those in need ".tr),
 ];

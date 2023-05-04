@@ -272,7 +272,7 @@ class _SignUpState extends State<SignUp> {
                         decoration: InputDecoration(
 
                           prefixIcon: Icon(Icons.bloodtype_outlined),
-                          hintText: "Enter your blood group",
+                          hintText: "Enter your blood group".tr,
                           contentPadding: EdgeInsets.symmetric(
                               vertical: 9.0, horizontal: 20.0),
                           border: OutlineInputBorder(
@@ -345,7 +345,7 @@ class _SignUpState extends State<SignUp> {
                           });
                         },
                       ),
-                      Text("Remember me",style: TextStyle(color: Colors.black38),),
+                      Text("Remember me".tr,style: TextStyle(color: Colors.black38),),
                       TextButton(
                         onPressed: () => Get.toNamed(forgotpassword),
                         child: Text("FORGOTE PASSWORD".tr,style: TextStyle(color: Colors.black38)),
@@ -373,7 +373,7 @@ class _SignUpState extends State<SignUp> {
                     Padding(
                       padding: const EdgeInsets.only(left: 50),
                       child: Row(children: [
-                        Text("Already have an account?"),
+                        Text("Already have an account?".tr),
                         TextButton(
                             onPressed: () => Get.toNamed(signup),
                             child: Text("LOGIN".tr,style: TextStyle(color: Colors.red),)
