@@ -115,19 +115,6 @@ class _NotifiCationState extends State<NotifiCation> {
               ),
             ],),
             SizedBox(height: 5,),
-
-
-
-
-
-
-
-
-
-
-
-
-
             Column(children: [
               Row(
                 children: [

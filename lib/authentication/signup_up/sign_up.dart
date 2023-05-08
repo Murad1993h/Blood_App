@@ -102,7 +102,7 @@ class _SignUpState extends State<SignUp> {
                       keyboardType: TextInputType.text,
                       decoration: InputDecoration(
                         prefixIcon: Icon(Icons.person_rounded),
-                        labelText: 'Enter your full name',
+                       // labelText: 'Enter your full name',
                         contentPadding: EdgeInsets.symmetric(
                             vertical: 9.0, horizontal: 20.0),
                         border: OutlineInputBorder(
@@ -123,6 +123,48 @@ class _SignUpState extends State<SignUp> {
                     const SizedBox(
                       height: 7,
                     ),
+
+
+
+
+                    Row(
+                      children: [
+                        Column(
+                          children: [
+                            Text(
+                              "E-mail Address".tr,
+                              style: TextStyle(fontSize: 10),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                    TextFormField(
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.symmetric(
+                            vertical: 9.0, horizontal: 20.0),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          borderSide: BorderSide.none,
+                        ),
+                        filled: true,
+                        fillColor: Colors.grey[200],
+
+                        labelStyle: TextStyle(
+                          color: Colors.black26,
+                        ),
+                        // labelText: 'NAME',
+                        hintText: "Insert your E-mail Address here".tr,
+                        hintStyle: TextStyle(fontSize: 12.0),
+                      ),
+                    ),
+
+
+
+                    const SizedBox(
+                      height: 7,
+                    ),
                     Row(
                       children: [
                         Column(
@@ -139,10 +181,10 @@ class _SignUpState extends State<SignUp> {
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
                         prefixIcon: Icon(Icons.phone_android),
-                        labelText: "Enter mobile numbar".tr,
+                       // labelText: "Enter mobile numbar".tr,
                         contentPadding: EdgeInsets.symmetric(vertical: 9.0, horizontal: 20.0),
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30.0),
+                          borderRadius: BorderRadius.circular(10.0),
                           borderSide: BorderSide.none,
                         ),
                         filled: true,
@@ -152,7 +194,7 @@ class _SignUpState extends State<SignUp> {
                           color: Colors.black26,
                         ),
                         // labelText: 'NAME',
-                        // hintText: "Enter mobile numbar".tr,
+                         hintText: "Enter mobile numbar".tr,
                         hintStyle: TextStyle(fontSize: 12.0),
                       ),
                     ),
@@ -177,11 +219,11 @@ class _SignUpState extends State<SignUp> {
                       keyboardType: TextInputType.text,
                       decoration: InputDecoration(
                         prefixIcon: Icon(Icons.lock_outline),
-                        labelText: '..........',
+                        //labelText: '..........',
                         suffixIcon: Icon(Icons.visibility),
                         contentPadding: EdgeInsets.symmetric(vertical: 9.0, horizontal: 20.0),
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30.0),
+                          borderRadius: BorderRadius.circular(10.0),
                           borderSide: BorderSide.none,
                         ),
                         filled: true,
@@ -191,7 +233,7 @@ class _SignUpState extends State<SignUp> {
                           color: Colors.black26,
                         ),
                         //labelText: 'PASSWORD',
-                        // hintText: '..........',
+                         hintText: '..........',
                         hintStyle: TextStyle(fontSize: 12.0),
                       ),
                     ),
@@ -203,7 +245,7 @@ class _SignUpState extends State<SignUp> {
                         Column(
                           children: [
                             Text(
-                              "Password".tr,
+                              "Confirm Password".tr,
                               style: TextStyle(fontSize: 10),
                             )
                           ],
@@ -216,11 +258,11 @@ class _SignUpState extends State<SignUp> {
                       keyboardType: TextInputType.text,
                       decoration: InputDecoration(
                         prefixIcon: Icon(Icons.lock_outline),
-                        labelText: '..........',
+                        //labelText: '..........',
                         suffixIcon: Icon(Icons.visibility),
                         contentPadding: EdgeInsets.symmetric(vertical: 9.0, horizontal: 20.0),
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30.0),
+                          borderRadius: BorderRadius.circular(10.0),
                           borderSide: BorderSide.none,
                         ),
                         filled: true,
@@ -229,8 +271,8 @@ class _SignUpState extends State<SignUp> {
                         labelStyle: TextStyle(
                           color: Colors.black26,
                         ),
-                        //labelText: 'PASSWORD',
-                        // hintText: '..........',
+
+                         hintText: '..........',
                         hintStyle: TextStyle(fontSize: 12.0),
                       ),
                     ),
@@ -249,7 +291,11 @@ class _SignUpState extends State<SignUp> {
                         ),
                       ],
                     ),
-                    /*CustomDropdown(
+                   /* CustomDropdown(
+                      //prefixIcon: Icon(Icons.lock_outline),
+                      fieldSuffixIcon:  Icon(Icons.bloodtype_outlined),
+                     // fieldPrffixIcon:  Icon(Icons.bloodtype_outlined),
+
 
                       fillColor: Colors.grey[200],
                       hintText: 'Select Blood Group'.tr,
@@ -257,6 +303,8 @@ class _SignUpState extends State<SignUp> {
                       items: const ["A +", "A -", "B +", "B -", "O +", "O -"],
                       controller: jobRoleCtrl,
                     ),*/
+
+
 
 
 
@@ -271,10 +319,16 @@ class _SignUpState extends State<SignUp> {
                         //fillColor: Colors.grey[200],
                         decoration: InputDecoration(
 
+
                           prefixIcon: Icon(Icons.bloodtype_outlined),
                           hintText: "Enter your blood group".tr,
+                          hintStyle: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 12,
+                            //fontStyle: FontStyle.italic,
+                          ),
                           contentPadding: EdgeInsets.symmetric(
-                              vertical: 9.0, horizontal: 20.0),
+                              vertical: 9.0, horizontal: 7.0),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),
                             borderSide: BorderSide.none,
@@ -282,9 +336,9 @@ class _SignUpState extends State<SignUp> {
                         ),
 
                         items: ["A +", "A -", "B +", "B -", "O +", "O -"]
-                            .map((language) => DropdownMenuItem(
-                          value: language,
-                          child: Text(language),
+                            .map((blood) => DropdownMenuItem(
+                          value: blood,
+                          child: Text(blood),
 
                         ))
                             .toList(),
@@ -292,6 +346,87 @@ class _SignUpState extends State<SignUp> {
                           print(value);
                         },
                       ),
+                    ),
+                    const SizedBox(
+                      height: 7,
+                    ),
+
+
+
+                    Row(
+                      children: [
+                        Column(
+                          children: [
+                            Text(
+                              "District".tr,
+                              style: TextStyle(fontSize: 10),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                    CustomDropdown(
+                      fillColor: Colors.grey[200],
+                      hintText: 'Select your District'.tr,
+                      hintStyle: TextStyle(fontSize: 12.0),
+                      items: const ["Dhaka",
+                        "Jhalokati",
+                        "Panchagarh",
+                      ],
+                      controller: district,
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+
+                    Row(
+                      children: [
+                        Column(
+                          children: [
+                            Text(
+                              "Ocuption".tr,
+                              style: TextStyle(fontSize: 10),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                    CustomDropdown(
+                      fillColor: Colors.grey[200],
+                      hintText: 'Select your Ocupation'.tr,
+                      hintStyle: TextStyle(fontSize: 12.0),
+                      items: const ["Student","Teacher","other"],
+                      controller: ocupation,
+                    ),
+                    const SizedBox(
+                      height: 7,
+                    ),
+                    Row(
+                      children: [
+                        Column(
+                          children: [
+                            Text(
+                              "University".tr,
+                              style: TextStyle(fontSize: 10),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                    CustomDropdown(
+                      fillColor: Colors.grey[200],
+                      hintText: "Select your University name".tr,
+                      hintStyle: TextStyle(fontSize: 12.0),
+                      items: const ["University of Dhaka",
+                        "University of Jahangirnagar",
+                        "University of BRAC ",
+                        "University of North South",
+                        "University of Rajshahi"],
+                      controller: university,
+                    ),
+
+                    const SizedBox(
+                      height: 10,
                     ),
 
 
