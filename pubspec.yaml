@@ -74,6 +74,7 @@ flutter:
     - assets/images/
     - assets/profile/
     - assets/icon/
+    - assets/icon/app_icons/
     - assets/hospital/
 
 

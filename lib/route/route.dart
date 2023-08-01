@@ -1,24 +1,21 @@
 import 'package:blood_apps/authentication/forgot_password.dart';
 import 'package:blood_apps/authentication/login/login.dart';
 import 'package:blood_apps/authentication/sign_in.dart';
-
 import 'package:blood_apps/authentication/signup_up.dart';
-import 'package:blood_apps/homepage/blood_request/blood_requet.dart';
-import 'package:blood_apps/homepage/blood_request/request_details/request_details.dart';
-import 'package:blood_apps/homepage/exampol.dart';
-import 'package:blood_apps/homepage/message/messagees.dart';
-import 'package:blood_apps/homepage/notification/notification.dart';
-
-import 'package:flutter/material.dart';
+import 'package:blood_apps/landingPage/blood_request/blood_requet.dart';
+import 'package:blood_apps/landingPage/blood_request/request_details/request_details.dart';
+import 'package:blood_apps/landingPage/exampol.dart';
+import 'package:blood_apps/landingPage/landing_page.dart';
+import 'package:blood_apps/landingPage/message/messages.dart';
+import 'package:blood_apps/landingPage/notification/notification.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
 import '../authentication/signup_up/sign_up.dart';
-import '../homepage/blood_request/request/request.dart';
-import '../homepage/home.dart';
-import '../homepage/profile/profile.dart';
+import '../landingPage/blood_request/request/request.dart';
+import '../landingPage/home.dart';
+import '../landingPage/profile/profile.dart';
 import '../languages/button.dart';
 import '../onbording/new_onbording.dart';
-
 import '../splash/splash_screen.dart';
 
 const String splash = '/splash-screen';
@@ -31,6 +28,7 @@ const String signupup = '/Signup-Up';
 const String forgotpassword = '/Forgot-Password';
 const String profile = '/Profile';
 const String home = '/Home';
+const String landing = '/Landing';
 const String exampol = '/Exampol';
 const String sms = '/Sma';
 const String massages = '/Massages';
@@ -45,6 +43,10 @@ List<GetPage> getPages = [
   GetPage(
     name: splash,
     page: () => SplashScreen(),
+  ),
+  GetPage(
+    name: landing,
+    page: () => LandingPage(),
   ),
 
   GetPage(

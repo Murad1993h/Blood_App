@@ -1,11 +1,6 @@
 import 'package:blood_apps/route/route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-
-import '../authentication/login/login.dart';
-import '../homepage/home.dart';
-//import 'onboarding_contents.dart';
 
 class Onbordings extends StatefulWidget {
   @override
@@ -102,7 +97,6 @@ class _OnbordingsState extends State<Onbordings> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text('GET STARTED'.tr),
-
                   SizedBox(width: 5),
                   Icon(
                     Icons.navigate_next_outlined,
@@ -113,16 +107,13 @@ class _OnbordingsState extends State<Onbordings> {
               ),
             ),
           ),
-
-
         ],
       ),
     );
   }
 
   Container buildDot(int index, BuildContext context) {
-    return
-      Container(
+    return Container(
       height: 10,
       width: currentIndex == index ? 25 : 10,
       margin: EdgeInsets.only(right: 5),
@@ -132,7 +123,6 @@ class _OnbordingsState extends State<Onbordings> {
       ),
     );
   }
-
 }
 
 class UnbordingContent {
@@ -140,17 +130,10 @@ class UnbordingContent {
   String title;
   String discription;
 
-  UnbordingContent(
-      {required this.image, required this.title, required this.discription});
+  UnbordingContent({required this.image, required this.title, required this.discription});
 }
 
 List<UnbordingContent> contents = [
-  UnbordingContent(
-      title: 'GIVE the Life'.tr,
-      image: 'assets/profile/donor.png',
-      discription: "Donate Blood and Save a Life today ".tr),
-  UnbordingContent(
-      title: 'Blood for Life'.tr,
-      image: ('assets/profile/img_1.png'),
-      discription: "Connecting donors with those in need ".tr),
+  UnbordingContent(title: 'GIVE the Life'.tr, image: 'assets/profile/donor.png', discription: "Donate Blood and Save a Life today ".tr),
+  UnbordingContent(title: 'Blood for Life'.tr, image: ('assets/profile/img_1.png'), discription: "Connecting donors with those in need ".tr),
 ];
