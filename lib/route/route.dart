@@ -6,16 +6,16 @@ import 'package:blood_apps/landingPage/blood_request/blood_requet.dart';
 import 'package:blood_apps/landingPage/blood_request/request_details/request_details.dart';
 import 'package:blood_apps/landingPage/exampol.dart';
 import 'package:blood_apps/landingPage/landing_page.dart';
-import 'package:blood_apps/landingPage/message/messages.dart';
 import 'package:blood_apps/landingPage/notification/notification.dart';
+import 'package:blood_apps/pages/profile/profile.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
-import '../authentication/signup_up/sign_up.dart';
+import '../authentication/signup_up/views/sign_up.dart';
 import '../landingPage/blood_request/request/request.dart';
 import '../landingPage/home.dart';
-import '../landingPage/profile/profile.dart';
 import '../languages/button.dart';
 import '../onbording/new_onbording.dart';
+import '../pages/message/messages.dart';
 import '../splash/splash_screen.dart';
 
 const String splash = '/splash-screen';

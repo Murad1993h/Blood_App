@@ -1,0 +1,227 @@
+
+              Row(
+                children: [
+                  Column(
+                    children: [
+                      Text(
+                        "full_name".tr,
+                        style: TextStyle(fontSize: 10),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+              TextFormField(
+                keyboardType: TextInputType.text,
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.person_rounded),
+                  labelText: 'Enter your full name',
+                  contentPadding: EdgeInsets.symmetric(vertical: 9.0, horizontal: 20.0),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: BorderSide.none,
+                  ),
+                  filled: true,
+                  fillColor: Colors.grey[200],
+
+                  labelStyle: TextStyle(
+                    color: Colors.black26,
+                  ),
+                  // labelText: 'NAME',
+                  hintText: "Insert your FullName here".tr,
+                  hintStyle: TextStyle(fontSize: 12.0),
+                ),
+              ),
+              const SizedBox(
+                height: 7,
+              ),
+              Row(
+                children: [
+                  Column(
+                    children: [
+                      Text(
+                        "Phone Numbar".tr,
+                        style: TextStyle(fontSize: 10),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+              TextFormField(
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.phone_android),
+                  labelText: "Enter mobile numbar".tr,
+                  contentPadding: EdgeInsets.symmetric(vertical: 9.0, horizontal: 20.0),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30.0),
+                    borderSide: BorderSide.none,
+                  ),
+                  filled: true,
+                  fillColor: Colors.grey[200],
+
+                  labelStyle: TextStyle(
+                    color: Colors.black26,
+                  ),
+                  // labelText: 'NAME',
+                  // hintText: "Enter mobile numbar".tr,
+                  hintStyle: TextStyle(fontSize: 12.0),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                children: [
+                  Column(
+                    children: [
+                      Text(
+                        "Password".tr,
+                        style: TextStyle(fontSize: 10),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+              TextFormField(
+                obscureText: true,
+                keyboardType: TextInputType.text,
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.lock_outline),
+                  labelText: '..........',
+                  suffixIcon: Icon(Icons.visibility),
+                  contentPadding: EdgeInsets.symmetric(vertical: 9.0, horizontal: 20.0),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30.0),
+                    borderSide: BorderSide.none,
+                  ),
+                  filled: true,
+                  fillColor: Colors.grey[200],
+
+                  labelStyle: TextStyle(
+                    color: Colors.black26,
+                  ),
+                  //labelText: 'PASSWORD',
+                  // hintText: '..........',
+                  hintStyle: TextStyle(fontSize: 12.0),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                children: [
+                  Column(
+                    children: [
+                      Text(
+                        "Password".tr,
+                        style: TextStyle(fontSize: 10),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+              TextFormField(
+                obscureText: true,
+                keyboardType: TextInputType.text,
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.lock_outline),
+                  labelText: '..........',
+                  suffixIcon: Icon(Icons.visibility),
+                  contentPadding: EdgeInsets.symmetric(vertical: 9.0, horizontal: 20.0),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30.0),
+                    borderSide: BorderSide.none,
+                  ),
+                  filled: true,
+                  fillColor: Colors.grey[200],
+
+                  labelStyle: TextStyle(
+                    color: Colors.black26,
+                  ),
+                  //labelText: 'PASSWORD',
+                  // hintText: '..........',
+                  hintStyle: TextStyle(fontSize: 12.0),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                children: [
+                  Column(
+                    children: [
+                      Text(
+                        "Blood Group".tr,
+                        style: TextStyle(fontSize: 10),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+              /*CustomDropdown(
+
+                fillColor: Colors.grey[200],
+                hintText: 'Select Blood Group'.tr,
+                hintStyle: TextStyle(fontSize: 12.0),
+                items: const ["A +", "A -", "B +", "B -", "O +", "O -"],
+                controller: jobRoleCtrl,
+              ),*/
+
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  borderRadius: BorderRadius.circular(10),
+                  //border: Border.all(color: Colors.grey),
+                ),
+                child: DropdownButtonFormField<String>(
+                  //fillColor: Colors.grey[200],
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.bloodtype_outlined),
+                    hintText: "Enter your blood group".tr,
+                    contentPadding: EdgeInsets.symmetric(vertical: 9.0, horizontal: 20.0),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                      borderSide: BorderSide.none,
+                    ),
+                  ),
+
+                  items: ["A +", "A -", "B +", "B -", "O +", "O -"]
+                      .map((language) => DropdownMenuItem(
+                            value: language,
+                            child: Text(language),
+                          ))
+                      .toList(),
+                  onChanged: (value) {
+                    print(value);
+                  },
+                ),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              Row(
+                children: [
+                  Checkbox(
+                    value: _isChecked,
+                    // shape: CircleBorder(),
+                    visualDensity: VisualDensity.compact,
+                    onChanged: (value) {
+                      setState(() {
+                        _isChecked = value!;
+                      });
+                    },
+                  ),
+                  Text(
+                    "Remember me".tr,
+                    style: TextStyle(color: Colors.black38),
+                  ),
+                  TextButton(
+                    onPressed: () => Get.toNamed(forgotpassword),
+                    child: Text("FORGOTE PASSWORD".tr, style: TextStyle(color: Colors.black38)),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 15,
+              ),

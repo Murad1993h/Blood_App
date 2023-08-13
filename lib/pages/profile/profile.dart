@@ -1,3 +1,4 @@
+import 'package:blood_apps/authentication/signup_up/views/sign_up.dart';
 import 'package:blood_apps/helpers/app_colors.dart';
 import 'package:blood_apps/helpers/app_spaces.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +47,9 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
               height: 30,
               width: 160,
               decoration: BoxDecoration(
-                border: Border.all(color: Colors.red),
+                border: Border.all(
+                  color: AppColors.primaryColor,
+                ),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: ElevatedButton(
@@ -62,17 +65,19 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     Expanded(
                       child: Icon(
                         Icons.fingerprint_outlined,
-                        color: Colors.red,
+                        color: AppColors.primaryColor,
                       ),
                     ),
                     SizedBox(width: 5),
                     Text(
                       'VIEW BADGES',
-                      style: TextStyle(color: Colors.red),
+                      style: TextStyle(
+                        color: AppColors.primaryColor,
+                      ),
                     ),
 
                     // Add some spacing between the icon and text
@@ -84,8 +89,8 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Column(
-                  children: const [
+                const Column(
+                  children: [
                     Text("250"),
                     Text(
                       "Followers",
@@ -94,8 +99,8 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                   ],
                 ),
                 AppSpaces.spaces_width_35,
-                Column(
-                  children: const [
+                const Column(
+                  children: [
                     Text("169"),
                     Text(
                       "Following",
@@ -111,15 +116,15 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                 // Your code here
               },
               style: ElevatedButton.styleFrom(
-                primary: Colors.red,
+                primary: AppColors.primaryColor,
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
-              child: Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   Text('INSIGHT'),
 
                   SizedBox(width: 5),
@@ -214,6 +219,17 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                       ],
                     ),
                   ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: InkWell(
+                onTap: () {
+                  Get.to(() => SignUp());
+                },
+                child: Text(
+                  'Sign Up',
                 ),
               ),
             ),

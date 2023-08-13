@@ -13,7 +13,7 @@ Map<String, String> ban = {
   "Enter mobile numbar": "মোবাইল নম্বর লিখুন",
   "PASSWORD": "পাসওয়ার্ড",
   "Remember me": "আমাকে মনে কর",
-  "FORGOTE PASSWORD": "পাসওয়ার্ড ভুলে গিয়েছেন",
+  "FORGOT PASSWORD": "পাসওয়ার্ড ভুলে গিয়েছেন",
   "Don't have an account yet?": "কোনো একাউন্ট এখানে নাই?",
   "log_in": "লগ ইন",
   "Signup": "সাইন আপ ",
