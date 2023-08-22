@@ -7,7 +7,7 @@ import 'package:blood_apps/landingPage/blood_request/request_details/request_det
 import 'package:blood_apps/landingPage/exampol.dart';
 import 'package:blood_apps/landingPage/landing_page.dart';
 import 'package:blood_apps/landingPage/notification/notification.dart';
-import 'package:blood_apps/pages/profile/profile.dart';
+import 'package:blood_apps/pages/profile/views/profile.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
 import '../authentication/signup_up/views/sign_up.dart';

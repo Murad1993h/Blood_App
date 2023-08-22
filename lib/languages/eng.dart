@@ -60,27 +60,11 @@ Map<String, String> eng = {
   "Blood Group": "Blood Group",
   "Select your Blood Group": "Select your Blood Group",
 
-  "Ocuption": "Ocuption",
   'Select your Ocupation': 'Select your Ocupation',
   //Student","Teacher","other":"Student","Teacher","other"
 
-  "University": "University",
-  "Select your University name": "Select your University name",
-  // "University of Dhaka",
-  // "University of Jahangirnagar",
-  // "University of BRAC ",
-  // "University of North South",
-  // "University of Rajshahi"
-
   "Country": "Country",
   'Select your Country': 'Select your Country',
-  // "Bangladesh","other":"Bangladesh","other"
-
-  "District": "District",
-  'Select your District': 'Select your District',
-  // "Dhaka",
-  // "Jhalokati",
-  // "Panchagarh",
 
   "City": "City",
   'Select your City': 'Select your City',
@@ -114,7 +98,7 @@ Map<String, String> eng = {
   'Sign up': 'SIGN UP',
   "Already have an account": "Already have an account?",
   "LOGIN": "LOGIN",
-  "Donating First Time": 'Are You Donating First Time?',
+  "Donating First Time": 'Are you donating first time?',
   "Yes": 'Yes',
   "No": 'No',
   "Donation date": 'Donation Date',
@@ -130,4 +114,14 @@ Map<String, String> eng = {
   "DoB": 'Date of Birth',
   "Blood group": 'Blood Group',
   "Age": 'Age',
+  "Division": 'Division',
+  "District": 'District',
+  "Thana": 'Thana',
+  "Hospital": 'Hospital',
+  "Occupation": "Occupation",
+  "University": 'University',
+  "Referral ID": 'Referral ID',
+  "Group": 'Group',
+  "Are you in any Group?": 'Are you connected any blood donor group? ',
+  "Work with us?": 'Are you interested to work with us?',
 };

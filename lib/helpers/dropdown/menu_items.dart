@@ -4,6 +4,34 @@ import 'package:get/get.dart';
 import '../app_colors.dart';
 import 'dropdown_menu_item.dart';
 
+// abstract class LocationItems {
+//   final List divisionData;
+//
+//   LocationItems({required this.divisionData});
+//
+//   // static List<MenuItem> firstItems = [home, share, settings];
+//
+//   static List<MenuItem> divisionItems = List.generate(
+//     divisionData.length,
+//     (index) => MenuItem(
+//       text: divisionData[index].name.toString(),
+//     ),
+//   );
+//
+//   // static MenuItem home = MenuItem(text: 'Male'.tr);
+//   // static MenuItem share = MenuItem(text: 'Female'.tr);
+//   // static MenuItem settings = MenuItem(text: 'Transgender'.tr);
+//
+//   static Widget buildItem(MenuItem item) {
+//     return Text(
+//       item.text,
+//       style: TextStyle(
+//         color: AppColors.primaryColor,
+//       ),
+//     );
+//   }
+// }
+
 abstract class GenderItems {
   static List<MenuItem> firstItems = [home, share, settings];
 

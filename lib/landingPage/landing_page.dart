@@ -3,7 +3,7 @@ import 'package:blood_apps/bottomBar/bottom_nav_bar.dart';
 import 'package:blood_apps/helpers/app_colors.dart';
 import 'package:blood_apps/landingPage/home.dart';
 import 'package:blood_apps/pages/message/messages.dart';
-import 'package:blood_apps/pages/profile/profile.dart';
+import 'package:blood_apps/pages/profile/views/profile.dart';
 import 'package:blood_apps/under_construction.dart';
 import 'package:flutter/material.dart';
 

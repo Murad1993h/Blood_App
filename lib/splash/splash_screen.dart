@@ -1,7 +1,8 @@
+import 'package:blood_apps/pages/profile/controllers/profile_controller.dart';
 import 'package:blood_apps/route/route.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -9,6 +10,8 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  ProfileController? profileController;
+
   @override
   void initState() {
     Future.delayed(
@@ -16,12 +19,17 @@ class _SplashScreenState extends State<SplashScreen> {
       () => Get.toNamed(onbordings),
     );
     super.initState();
+
+    profileController = Provider.of<ProfileController>(context, listen: false);
+    profileController!.getLocations();
+    profileController!.getHospital();
+    profileController!.getGroupList();
   }
 
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          backgroundColor:Colors.red,
+          backgroundColor: Colors.red,
           body: Container(
             //decoration: appColor(),
             width: double.maxFinite,
@@ -32,10 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 children: [
                   Text(
                     'app_name'.tr,
-                    style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
+                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
                   ),
                   SizedBox(
                     height: 30,
