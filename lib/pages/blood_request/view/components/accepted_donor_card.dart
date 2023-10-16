@@ -36,7 +36,7 @@ class _AcceptedDonorCardState extends State<AcceptedDonorCard> {
           CircleAvatar(
             backgroundColor: AppColors.lime.withOpacity(0.3),
             child: Image.asset(
-              'assets/profile/donor.png',
+              'assets/icon/app_icons/donor.png',
               height: 30,
               width: 30,
             ),

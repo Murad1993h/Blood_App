@@ -41,16 +41,30 @@ abstract class BloodRequestItems {
 
 abstract class PatientProblemItems {
   static List<MenuItem> firstItems = [
+    const MenuItem(text: 'Trauma Patients'),
+    const MenuItem(text: 'Surgery and Transplant Patients'),
+    const MenuItem(text: 'Cancer Patients'),
+    const MenuItem(text: 'Anemic Patients'),
     const MenuItem(text: 'Delivery'),
-    const MenuItem(text: 'Accident'),
-    const MenuItem(text: 'Open Heart Surgery'),
+    const MenuItem(text: 'Patients with Blood Disorders'),
+    const MenuItem(text: 'Patients Undergoing Bone Marrow Transplants'),
+    const MenuItem(text: 'Burn Victims'),
+    const MenuItem(text: 'Patients with Chronic Diseases'),
+    const MenuItem(text: 'Patients Undergoing Heart Surgery'),
+    const MenuItem(text: 'Patients with Inherited Blood Disorders'),
+    const MenuItem(text: 'Patients Undergoing Therapeutic Plasma Exchange'),
+    const MenuItem(text: 'Patients with Liver Diseases'),
+    const MenuItem(text: 'Thalassemia Diseases'),
   ];
 
   static Widget buildItem(MenuItem item) {
-    return Text(
-      item.text,
-      style: TextStyle(
-        color: AppColors.primaryColor,
+    return Container(
+      width: Get.width * .8,
+      child: Text(
+        item.text,
+        style: TextStyle(
+          color: AppColors.primaryColor,
+        ),
       ),
     );
   }

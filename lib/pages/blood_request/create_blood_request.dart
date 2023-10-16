@@ -291,7 +291,7 @@ class _CreateBloodRequestState extends State<CreateBloodRequest> {
                                         });
                                       },
                                       dropdownStyleData: DropdownStyleData(
-                                        width: 160,
+                                        width: 300,
                                         padding: const EdgeInsets.symmetric(vertical: 6),
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(4),
