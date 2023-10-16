@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:blood_apps/helpers/networkHelper/app_extention.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 import '../../main.dart';
@@ -14,7 +15,7 @@ class BaseClient {
   Future<dynamic> get(String baseUrl, String api) async {
     var uri = Uri.parse(baseUrl + api);
 
-    // debugPrint(uri.toString());
+    debugPrint(uri.toString());
     try {
       var response = await http.get(uri, headers: {
         'Authorization': 'Bearer ${prefs!.getString("token")}' ?? '',

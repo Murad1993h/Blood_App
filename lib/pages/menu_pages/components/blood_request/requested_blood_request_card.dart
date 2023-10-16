@@ -75,64 +75,73 @@ class _RequestedBloodRequestCardState extends State<RequestedBloodRequestCard> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Date",
-                                style: TextStyle(
-                                  color: AppColors.black45,
-                                  fontSize: 10,
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Date",
+                                  style: TextStyle(
+                                    color: AppColors.black45,
+                                    fontSize: 10,
+                                  ),
                                 ),
-                              ),
-                              AppSpaces.spaces_height_5,
-                              Text(
-                                Jiffy(widget.requestList!.date.toString()).format('MMM dd, yyyy'),
-                                style: const TextStyle(
-                                  fontSize: 14,
+                                AppSpaces.spaces_height_5,
+                                Text(
+                                  Jiffy(widget.requestList!.date.toString()).format('MMM dd, yyyy'),
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                           AppSpaces.spaces_width_15,
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Quantity",
-                                style: TextStyle(
-                                  color: AppColors.black45,
-                                  fontSize: 10,
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Quantity",
+                                  style: TextStyle(
+                                    color: AppColors.black45,
+                                    fontSize: 10,
+                                  ),
                                 ),
-                              ),
-                              AppSpaces.spaces_height_5,
-                              Text(
-                                "${widget.requestList!.bloodQuantity}(Bag)",
-                                style: const TextStyle(
-                                  fontSize: 14,
+                                AppSpaces.spaces_height_5,
+                                Text(
+                                  "${widget.requestList!.bloodQuantity}(Bag)",
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                  ),
+                                  textAlign: TextAlign.center,
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                           AppSpaces.spaces_width_15,
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Patient Problem",
-                                style: TextStyle(
-                                  color: AppColors.black45,
-                                  fontSize: 10,
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Text(
+                                  "Patient Problem",
+                                  style: TextStyle(
+                                    color: AppColors.black45,
+                                    fontSize: 10,
+                                  ),
+                                  maxLines: 2,
                                 ),
-                              ),
-                              AppSpaces.spaces_height_5,
-                              Text(
-                                "${widget.requestList!.patientProblem}",
-                                style: const TextStyle(
-                                  fontSize: 14,
+                                AppSpaces.spaces_height_5,
+                                Text(
+                                  "${widget.requestList!.patientProblem}",
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                  ),
+                                  textAlign: TextAlign.end,
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ],
                       ),

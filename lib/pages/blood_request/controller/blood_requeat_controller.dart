@@ -27,7 +27,9 @@ class BloodRequestController extends ChangeNotifier {
 
   Future<List?> getRunningRequest() async {
     runningBloodRequestModel = null;
-    final response = await BaseClient().get(api_main_url, "requestList-all");
+
+    String? endPoint = prefs!.getBool('guestLogIn') == true ? 'requestList-all' : 'requestList-without-personal';
+    final response = await BaseClient().get(api_main_url, endPoint);
 
     var data = json.decode(response);
 
@@ -60,7 +62,7 @@ class BloodRequestController extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> sslCommerzGeneralCall(double? amount, String transactionId) async {
+  Future<void> sslCommerzGeneralCall(double? amount, String transactionId, var valueA, var valueD) async {
     Sslcommerz sslcommerz = Sslcommerz(
       initializer: SSLCommerzInitialization(
         // ipn_url: "https://sandbox.sslcommerz.com/gwprocess/v3/api.php",
@@ -99,10 +101,10 @@ class BloodRequestController extends ChangeNotifier {
         );
       } else {
         var body = {
-          "cus_name": "MrMostafiz",
-          "cus_email": "mr.mos@gmail.com",
-          "cus_add1": "43",
-          "total_amount": 100,
+          "cus_name": prefs!.getString('userName'),
+          "cus_email": prefs!.getString('userEmail'),
+          "cus_add1": prefs!.getString('districtId'),
+          "total_amount": result.storeAmount,
           'tran_id': result.tranId,
           'val_id': result.valId,
           'amount': result.amount,
@@ -117,7 +119,7 @@ class BloodRequestController extends ChangeNotifier {
           'card_brand': result.cardBrand,
           'card_issuer_country': result.cardIssuerCountry,
           'card_issuer_country_code': result.cardIssuerCountryCode,
-          'store_id': result.storeAmount,
+          'store_id': 'geoor650550b5d9ab5',
           'verify_sign': '',
           'verify_key': '',
           'cus_fax': '',
@@ -126,10 +128,10 @@ class BloodRequestController extends ChangeNotifier {
           'currency_amount': result.currencyAmount,
           'currency_rate': result.currencyRate,
           'base_fair': '',
-          "value_a": result.valueA,
+          "value_a": valueA, //Request Id
           'value_b': result.valueB,
           'value_c': result.valueC,
-          "value_d": result.valueD,
+          "value_d": valueD,
           'risk_level': result.riskLevel,
           'risk_title': result.riskTitle,
           'error': '',
@@ -183,7 +185,12 @@ class BloodRequestController extends ChangeNotifier {
         if (response.statusCode == 200) {
           Get.back();
 
-          sslCommerzGeneralCall(amount, transactionId);
+          debugPrint("Req Create: " + js.toString());
+
+          var valueA = js['value_a'];
+          var valueD = js['value_d'];
+
+          sslCommerzGeneralCall(amount, transactionId, valueA, valueD);
 
           getRunningRequest();
           getMyResponseRequest(prefs!.getString('userId').toString());
@@ -383,7 +390,7 @@ class BloodRequestController extends ChangeNotifier {
       HttpHeaders.acceptHeader: 'application/json',
     });
 
-    debugPrint("Success: $body");
+    debugPrint("Body: $body");
     var x = json.decode(response.body);
 
     Map<String, dynamic> js = x;
@@ -396,6 +403,7 @@ class BloodRequestController extends ChangeNotifier {
         response.statusCode == 201) {
       try {
         if (response.statusCode == 200) {
+          getMyRequests();
           Get.back();
           Flushbar(
               flushbarPosition: FlushbarPosition.BOTTOM,

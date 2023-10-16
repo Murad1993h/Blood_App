@@ -56,9 +56,10 @@ class _DonorProfilesState extends State<DonorProfiles> {
                       (element) => element.donorId == requestResponse![index].donorId,
                     )
                     .donorDetails,
+                requestResponse: requestResponse![index],
                 acceptTap: () {
                   var body = {
-                    "id": requestResponse![index].donorId,
+                    "id": requestResponse![index].id,
                     "status": 1,
                   };
 
@@ -69,9 +70,10 @@ class _DonorProfilesState extends State<DonorProfiles> {
                 },
                 cancelTap: () {
                   var body = {
-                    "id": requestResponse![index].donorId,
+                    "id": requestResponse![index].id,
                     "status": 0,
                   };
+                  setState(() {});
 
                   bloodRequestController!.acceptRejectDonor(
                     context,

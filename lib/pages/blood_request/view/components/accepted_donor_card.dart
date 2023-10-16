@@ -3,8 +3,11 @@ import 'package:blood_apps/helpers/app_colors.dart';
 import 'package:blood_apps/helpers/app_spaces.dart';
 import 'package:flutter/material.dart';
 
+import '../../models/MyRequestListModel.dart';
+
 class AcceptedDonorCard extends StatefulWidget {
   final DonorDetails? donorDetails;
+  final RequestResponse? requestResponse;
   final VoidCallback? acceptTap;
   final VoidCallback? cancelTap;
 
@@ -13,6 +16,7 @@ class AcceptedDonorCard extends StatefulWidget {
     this.donorDetails,
     this.acceptTap,
     this.cancelTap,
+    this.requestResponse,
   }) : super(key: key);
 
   @override
@@ -149,35 +153,53 @@ class _AcceptedDonorCardState extends State<AcceptedDonorCard> {
               AppSpaces.spaces_height_15,
               Row(
                 children: [
-                  InkWell(
-                    onTap: widget.acceptTap,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: AppColors.darkGreen,
-                        borderRadius: BorderRadius.circular(5.0),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(5.0),
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.check_circle,
-                              size: 15,
-                              color: AppColors.white,
+                  widget.requestResponse!.status == 0
+                      ? InkWell(
+                          onTap: widget.acceptTap,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: AppColors.darkGreen,
+                              borderRadius: BorderRadius.circular(5.0),
                             ),
-                            AppSpaces.spaces_width_5,
-                            Text(
-                              'Accept Request',
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: AppColors.white,
+                            child: Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.check_circle,
+                                    size: 15,
+                                    color: AppColors.white,
+                                  ),
+                                  AppSpaces.spaces_width_5,
+                                  Text(
+                                    'Accept Request',
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: AppColors.white,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-                          ],
+                          ),
+                        )
+                      : Container(
+                          decoration: BoxDecoration(
+                            color: AppColors.white,
+                            borderRadius: BorderRadius.circular(5.0),
+                            border: Border.all(color: AppColors.darkGreen),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: Text(
+                              "Code: ${widget.requestResponse!.paymentCode}",
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: AppColors.darkGreen,
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                  ),
                   AppSpaces.spaces_width_10,
                   InkWell(
                     onTap: widget.cancelTap,

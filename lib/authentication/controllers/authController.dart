@@ -99,8 +99,6 @@ class AuthController extends ChangeNotifier with BaseController {
 
     Map<String, dynamic> js = x;
 
-    debugPrint("LogIn: $js");
-
     if (response.statusCode == 200 ||
         response.statusCode == 401 ||
         response.statusCode == 403 ||
@@ -115,6 +113,7 @@ class AuthController extends ChangeNotifier with BaseController {
         prefs!.setString('userPassword', body['password']);
         prefs!.setString('userId', js['user'][0]['id'].toString());
         prefs!.setString('donorId', js['user'][0]['donor_id']);
+        prefs!.setString('districtId', js['user'][0]['donor_details']['district_id']);
 
         if (response.statusCode == 200) {
           if (requestAgain == false) {
