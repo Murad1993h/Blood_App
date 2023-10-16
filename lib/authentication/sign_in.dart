@@ -50,12 +50,12 @@ class SignIn extends StatelessWidget {
               const SizedBox(
                 height: 25,
               ),
-              const Padding(
-                padding: EdgeInsets.only(left: 40),
+               Padding(
+                padding: const EdgeInsets.only(left: 40),
                 child: Row(
                   children: [
                     Column(
-                      children: [Text("E-mail Address")],
+                      children: const [Text("E-mail Address")],
                     ),
                   ],
                 ),
@@ -87,12 +87,12 @@ class SignIn extends StatelessWidget {
               const SizedBox(
                 height: 25,
               ),
-              const Padding(
+               Padding(
                 padding: EdgeInsets.only(left: 40),
                 child: Row(
                   children: [
                     Column(
-                      children: [Text("Password")],
+                      children: const [Text("Password")],
                     ),
                   ],
                 ),
@@ -182,11 +182,11 @@ class SignIn extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              const Row(
+               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Column(
-                    children: [
+                    children: const [
                       SizedBox(
                         width: 60,
                         height: 60,
@@ -209,7 +209,7 @@ class SignIn extends StatelessWidget {
                     width: 15,
                   ),
                   Column(
-                    children: [
+                    children: const [
                       SizedBox(
                         width: 60,
                         height: 60,
@@ -232,7 +232,7 @@ class SignIn extends StatelessWidget {
                     width: 15,
                   ),
                   Column(
-                    children: [
+                    children: const [
                       SizedBox(
                         width: 60,
                         height: 60,

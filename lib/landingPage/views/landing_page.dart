@@ -10,10 +10,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:provider/provider.dart';
 
-import '../helpers/app_spaces.dart';
-import '../helpers/dialogue/dialogues.dart';
-import '../pages/home/controllers/home_controller.dart';
-import '../pages/profile/controllers/profile_controller.dart';
+import '../../helpers/app_spaces.dart';
+import '../../helpers/dialogue/dialogues.dart';
+import '../../main.dart';
+import '../../pages/home/controllers/home_controller.dart';
+import '../../pages/profile/controllers/profile_controller.dart';
 
 final zoomDrawerController = ZoomDrawerController();
 
@@ -68,8 +69,9 @@ class _LandingMainPageState extends State<LandingMainPage> {
     profileController = Provider.of<ProfileController>(context, listen: false);
 
     homeController!.getSliders();
-    profileController!.getUserInfo();
-
+    if (prefs!.getBool('guestLogIn') == false) {
+      profileController!.getUserInfo();
+    }
     super.initState();
   }
 

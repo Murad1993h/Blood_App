@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:blood_apps/authentication/models/UserListModel.dart';
 import 'package:blood_apps/pages/home/models/SliderModel.dart';
+import 'package:blood_apps/pages/profile/models/AchivementModel.dart';
 import 'package:blood_apps/pages/profile/models/GroupModel.dart';
 import 'package:blood_apps/pages/profile/models/HospitalModel.dart';
 import 'package:blood_apps/pages/profile/models/LocationModel.dart';
@@ -20,6 +21,18 @@ class ProfileController extends ChangeNotifier {
   SliderModel? sliderModel;
   ProfileModel? profileModel;
   UserListModel? userListModel;
+  AchivementModel? achivementModel;
+
+  Future<List?> getAchievement() async {
+    achivementModel = null;
+    final response = await BaseClient().get(api_main_url, "achivement-list");
+
+    var data = json.decode(response);
+
+    achivementModel = AchivementModel.fromJson(data);
+
+    notifyListeners();
+  }
 
   Future<List?> getUsers() async {
     userListModel = null;
@@ -80,8 +93,6 @@ class ProfileController extends ChangeNotifier {
     final response = await BaseClient().get(api_main_url, "university-list");
 
     var data = json.decode(response);
-
-    debugPrint("data: $data");
 
     universityModel = UniversityModel.fromJson(data);
 

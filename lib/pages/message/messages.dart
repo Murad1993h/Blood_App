@@ -1,4 +1,5 @@
 import 'package:blood_apps/helpers/app_colors.dart';
+import 'package:blood_apps/pages/under_construction.dart';
 import 'package:flutter/material.dart';
 
 import '../chat_with_expert/views/chat_text_view.dart';
@@ -14,7 +15,7 @@ class Massages extends StatefulWidget {
 class _MassagesState extends State<Massages> {
   List<Tab> tabs = [
     const Tab(child: Text('Chat With Donor')),
-    const Tab(child: Text('Chat With an Expert')),
+    const Tab(child: Text('Chat With AI Doctor')),
   ];
 
   @override
@@ -28,12 +29,12 @@ class _MassagesState extends State<Massages> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TabBar(
-                unselectedLabelColor: Colors.redAccent,
+                unselectedLabelColor: AppColors.primaryColor,
                 indicatorSize: TabBarIndicatorSize.tab,
                 indicator: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      AppColors.black45,
+                      AppColors.darkGreen,
                       AppColors.primaryColor,
                     ],
                   ),
@@ -43,21 +44,22 @@ class _MassagesState extends State<Massages> {
                 tabs: tabs,
               ),
             ),
-            Expanded(
+            const Expanded(
               child: TabBarView(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: 10,
-                        itemBuilder: (context, index) {
-                          return MessageCard(
-                            index: index,
-                          );
-                        }),
-                  ),
-                  const ChatWithExpert(),
+                  UnderConstruction(),
+                  // Padding(
+                  //   padding: const EdgeInsets.all(8.0),
+                  //   child: ListView.builder(
+                  //       shrinkWrap: true,
+                  //       itemCount: 10,
+                  //       itemBuilder: (context, index) {
+                  //         return MessageCard(
+                  //           index: index,
+                  //         );
+                  //       }),
+                  // ),
+                  ChatWithExpert(),
                 ],
               ),
             ),

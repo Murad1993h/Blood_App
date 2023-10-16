@@ -1,3 +1,4 @@
+import 'package:another_flushbar/flushbar.dart';
 import 'package:blood_apps/main.dart';
 import 'package:blood_apps/pages/blood_request/controller/blood_requeat_controller.dart';
 import 'package:blood_apps/pages/blood_request/view/components/request_card_home.dart';
@@ -43,9 +44,11 @@ class _BloodRequestListState extends State<BloodRequestList> {
                   return bloodData.runningBloodRequestModel!.requestList![index].requestBy.toString() == prefs!.getString('userId')
                       ? Container()
                       : RequestCardHome(
-                          accepted: bloodData.myResponseModel!.data!.where((e) {
-                            return e.requestId.toString() == bloodData.runningBloodRequestModel!.requestList![index].id.toString();
-                          }).toList(),
+                          accepted: bloodData.myResponseModel != null
+                              ? bloodData.myResponseModel!.data!.where((e) {
+                                  return e.requestId.toString() == bloodData.runningBloodRequestModel!.requestList![index].id.toString();
+                                }).toList()
+                              : [],
                           index: index,
                           runningRequestList: bloodData.runningBloodRequestModel!.requestList![index],
                           onTap: () {
@@ -55,7 +58,20 @@ class _BloodRequestListState extends State<BloodRequestList> {
                               "user": prefs!.getString('userId'),
                               "donor_id": prefs!.getString('donorId'),
                             };
-                            bloodData.acceptRequest(context, body);
+                            prefs!.getBool('guestLogIn') == true
+                                ? Flushbar(
+                                    flushbarPosition: FlushbarPosition.BOTTOM,
+                                    isDismissible: false,
+                                    backgroundColor: AppColors.lime,
+                                    duration: const Duration(seconds: 3),
+                                    messageText: Text(
+                                      "Please Login First",
+                                      style: TextStyle(
+                                        fontSize: 16.0,
+                                        color: AppColors.darkGreen,
+                                      ),
+                                    )).show(context)
+                                : bloodData.acceptRequest(context, body);
                           },
                           fromWhere: 'all-list',
                         );

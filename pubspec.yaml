@@ -41,16 +41,16 @@ dependencies:
   animated_custom_dropdown: ^1.5.0
   fsearch: ^2.0.0
   http:
-  chat_gpt_sdk: ^2.2.4
+#  chat_gpt_sdk: ^2.2.4
   material_buttonx:
   image_picker:
-  google_fonts: ^5.1.0
+  google_fonts:
   date_time_picker: ^2.1.0
-  dropdown_button2: ^2.3.8
+  dropdown_button2:
   another_flushbar: ^1.12.30
   cached_network_image: ^3.2.3
   carousel_slider:
-  google_maps_flutter: ^2.5.0
+  google_maps_flutter:
   location: ^5.0.3
   readmore: ^2.2.0
   flutter_sslcommerz:
@@ -67,6 +67,27 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  flutter_launcher_icons: ^0.13.1
+  change_app_package_name: ^1.1.0
+
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/logo/sbdms_logo.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  web:
+    generate: true
+    image_path: "assets/logo/sbdms_logo.png"
+    background_color: "#hexcode"
+    theme_color: "#hexcode"
+  windows:
+    generate: true
+    image_path: "assets/logo/sbdms_logo.png"
+    icon_size: 48 # min:48, max:256, default: 48
+  macos:
+    generate: true
+    image_path: "assets/logo/sbdms_logo.png"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -89,11 +110,10 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
-    - assets/profile/
     - assets/icon/
     - assets/icon/app_icons/
-    - assets/hospital/
     - assets/fonts/
+    - assets/logo/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

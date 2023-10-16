@@ -1,5 +1,5 @@
 Map<String, String> eng = {
-  "app_name": "Blood App",
+  "app_name": "Smart Blood Donation Management System",
   'GET STARTED': 'GET STARTED',
   'GIVE the Life': 'GIVE the Life',
   "Donate Blood and Save a Life today ": "Donate Blood and Save a Life today ",
@@ -63,26 +63,6 @@ Map<String, String> eng = {
   'Select your Ocupation': 'Select your Ocupation',
   //Student","Teacher","other":"Student","Teacher","other"
 
-  "Country": "Country",
-  'Select your Country': 'Select your Country',
-
-  "City": "City",
-  'Select your City': 'Select your City',
-  // "Dhaka",
-  // "Khulna",
-  // "Sylhet",
-  // "Chattogram",
-
-  "Area": "Area",
-  'Select your Area': 'Select your Area',
-  // "Dhaka",
-  // "Khulna",
-  // "Sylhet",
-  // "Chattogram",
-
-  "Have you donated blood last 3 month": "Have you donated blood last 3 month",
-  // "1","2","3"
-
   "Refarence": "Refarence",
 
   "Last Blood Donation Date": "Last Blood Donation Date",
@@ -117,7 +97,7 @@ Map<String, String> eng = {
   "Division": 'Division',
   "District": 'District',
   "Thana": 'Thana',
-  "Hospital": 'Hospital',
+  "Hospital": 'Hospitals',
   "Occupation": "Occupation",
   "University": 'University',
   "Referral ID": 'Referral ID',
@@ -125,8 +105,10 @@ Map<String, String> eng = {
   "Are you in any Group?": 'Are you connected any blood donor group? ',
   "Work with us?": 'Are you interested to work with us?',
   "Log Out": 'Log Out',
-  "Hospital List": 'Hospital List',
-  "University List": 'University List',
+  "Hospital List": 'Hospitals',
+  "University List": 'Universities',
+  "Groups": 'Groups',
+  "Events": 'Events',
   "Apply": 'Apply',
 
   //Blood Request
@@ -141,4 +123,12 @@ Map<String, String> eng = {
   'Proceed to pay': 'Proceed to Pay',
 
   'Request list': 'Request List',
+
+  'Terms and Condition': 'Terms and Condition',
+  'Privacy Policy': 'Privacy Policy',
+  'Settings': 'Settings',
+  'About Us': 'About Us',
+  'Contact Us': 'Contact Us',
+  'FAQs': 'FAQs',
+  'Blood Bank': 'Blood Bank',
 };

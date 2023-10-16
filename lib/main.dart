@@ -55,7 +55,7 @@ class _MyAppState extends State<MyApp> {
       fallbackLocale: Locale('en', 'US'),
       //title: AppString.appName,
       theme: ThemeData(
-        //primarySwatch:  Colors.cyan,
+        primarySwatch:  Colors.red,
         textTheme: GoogleFonts.josefinSansTextTheme(
           Theme.of(context).textTheme.apply(),
         ),

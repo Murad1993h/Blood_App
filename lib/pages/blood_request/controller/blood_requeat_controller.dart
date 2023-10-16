@@ -31,6 +31,8 @@ class BloodRequestController extends ChangeNotifier {
 
     var data = json.decode(response);
 
+    debugPrint("Req List: " + data.toString());
+
     runningBloodRequestModel = RunningBloodRequestModel.fromJson(data);
 
     notifyListeners();

@@ -1,3 +1,4 @@
+import 'package:blood_apps/helpers/app_spaces.dart';
 import 'package:blood_apps/route/route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -43,6 +44,7 @@ class _OnbordingsState extends State<Onbordings> {
                 return Padding(
                   padding: const EdgeInsets.all(40),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       //Image.asset('assets/profile/img_1.png'),
                       /* SvgPicture.asset(
@@ -53,6 +55,7 @@ class _OnbordingsState extends State<Onbordings> {
                         contents[i].image,
                         height: 300,
                       ),
+                      AppSpaces.spaces_height_25,
                       Text(
                         contents[i].title,
                         style: const TextStyle(
@@ -60,7 +63,7 @@ class _OnbordingsState extends State<Onbordings> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const SizedBox(height: 20),
+                      AppSpaces.spaces_height_20,
                       Text(
                         contents[i].discription,
                         textAlign: TextAlign.center,
@@ -136,6 +139,6 @@ class UnbordingContent {
 }
 
 List<UnbordingContent> contents = [
-  UnbordingContent(title: 'GIVE the Life'.tr, image: 'assets/profile/donor.png', discription: "Donate Blood and Save a Life today ".tr),
-  UnbordingContent(title: 'Blood for Life'.tr, image: ('assets/profile/img_1.png'), discription: "Connecting donors with those in need ".tr),
+  UnbordingContent(title: 'GIVE the Life'.tr, image: 'assets/icon/app_icons/donor.png', discription: "Donate Blood and Save a Life today ".tr),
+  UnbordingContent(title: 'Blood for Life'.tr, image: ('assets/icon/blood-brothers.png'), discription: "Connecting donors with those in need ".tr),
 ];

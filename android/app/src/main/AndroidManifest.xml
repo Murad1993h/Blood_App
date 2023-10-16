@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.blood_apps">
+    package="com.hupbd.sbdms">
 
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
@@ -7,8 +7,8 @@
 
     <application
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher"
-        android:label="blood_apps">
+        android:icon="@mipmap/launcher_icon"
+        android:label="SBDMS">
 
         <activity
             android:name=".MainActivity"

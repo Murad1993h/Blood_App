@@ -1,3 +1,4 @@
+import 'package:blood_apps/helpers/app_colors.dart';
 import 'package:blood_apps/main.dart';
 import 'package:blood_apps/pages/profile/controllers/profile_controller.dart';
 import 'package:blood_apps/route/route.dart';
@@ -51,21 +52,23 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.red,
         body: SizedBox(
           //decoration: appColor(),
           width: double.maxFinite,
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.end,
+              // crossAxisAlignment: CrossAxisAlignment.end,
               children: [
+                Image.asset('assets/logo/sbdms_logo.png'),
                 Text(
                   'app_name'.tr,
-                  style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
-                ),
-                const SizedBox(
-                  height: 30,
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.darkGreen,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
               ],
             ),

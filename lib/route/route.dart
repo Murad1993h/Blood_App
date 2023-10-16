@@ -1,9 +1,8 @@
 import 'package:blood_apps/authentication/forgot_password.dart';
 import 'package:blood_apps/authentication/login/login.dart';
 import 'package:blood_apps/authentication/sign_in.dart';
-import 'package:blood_apps/authentication/signup_up.dart';
 import 'package:blood_apps/landingPage/exampol.dart';
-import 'package:blood_apps/landingPage/landing_page.dart';
+import 'package:blood_apps/landingPage/views/landing_page.dart';
 import 'package:blood_apps/pages/blood_request/blood_request_list.dart';
 import 'package:blood_apps/pages/blood_request/view/accepted_donors.dart';
 import 'package:blood_apps/pages/menu_pages/hospital_list.dart';
@@ -69,10 +68,6 @@ List<GetPage> getPages = [
   GetPage(
     name: signin,
     page: () => const SignIn(),
-  ),
-  GetPage(
-    name: signupup,
-    page: () => const SignupUp(),
   ),
   GetPage(
     name: forgotpassword,

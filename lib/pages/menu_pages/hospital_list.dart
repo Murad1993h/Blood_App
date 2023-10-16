@@ -103,9 +103,9 @@ class _HospitalListState extends State<HospitalList> {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                const Expanded(
+                 Expanded(
                   child: Column(
-                    children: [
+                    children: const [
                       Text(
                         'Filter by District',
                       ),

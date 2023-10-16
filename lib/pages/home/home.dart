@@ -1,7 +1,9 @@
+import 'package:another_flushbar/flushbar.dart';
 import 'package:blood_apps/helpers/app_spaces.dart';
 import 'package:blood_apps/helpers/urls.dart';
 import 'package:blood_apps/main.dart';
 import 'package:blood_apps/pages/blood_request/controller/blood_requeat_controller.dart';
+import 'package:blood_apps/pages/home/components/achivement_card.dart';
 import 'package:blood_apps/pages/home/controllers/home_controller.dart';
 import 'package:blood_apps/pages/profile/controllers/profile_controller.dart';
 import 'package:blood_apps/route/route.dart';
@@ -36,8 +38,10 @@ class _HomeState extends State<Home> {
 
     bloodRequestController!.getRunningRequest();
 
-    bloodRequestController!.getMyResponseRequest(prefs!.getString('userId').toString());
-    bloodRequestController!.getMyRequests();
+    if (prefs!.getBool('guestLogIn') == false) {
+      bloodRequestController!.getMyResponseRequest(prefs!.getString('userId').toString());
+      bloodRequestController!.getMyRequests();
+    }
     // homeController!.getSliders();
     loadData();
     super.initState();
@@ -45,6 +49,7 @@ class _HomeState extends State<Home> {
 
   void loadData() async {
     debugPrint('Load Data');
+    await profileController!.getAchievement();
     await profileController!.getLocations();
     await profileController!.getHospital();
     await profileController!.getGroupList();
@@ -113,13 +118,13 @@ class _HomeState extends State<Home> {
                   children: [
                     ///Welcome Text
                     Text(
-                      "Hi, ${prefs!.getString('userName')}",
+                      "Hi, ${prefs!.getString('userName') ?? ''}",
                       style: TextStyle(
                         color: AppColors.textColor,
                         fontSize: 20,
                       ),
                     ),
-                    AppSpaces.spaces_height_15,
+                    AppSpaces.spaces_height_10,
                     homeData.sliderModel != null
                         ? Container(
                             height: 150,
@@ -171,30 +176,90 @@ class _HomeState extends State<Home> {
                             ),
                           )
                         : Container(),
-                    AppSpaces.spaces_height_15,
 
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
-                          'Upcoming Requests',
-                          style: TextStyle(fontSize: 16),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            Get.toNamed(requestList);
-                          },
-                          child: const Icon(
-                            Icons.arrow_forward_ios_rounded,
-                            size: 20,
-                          ),
-                        ),
-                      ],
+                    AppSpaces.spaces_height_10,
+
+                    Consumer<ProfileController>(builder: (context, profileData, index) {
+                      return SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: profileData.achivementModel != null
+                            ? Row(
+                                // alignment: WrapAlignment.center,
+                                children: [
+                                  AchievementCard(
+                                    title: 'Total Donor',
+                                    count: profileData.achivementModel!.totalDonor.toString(),
+                                    imagePath: 'assets/icon/app_icons/donor.png',
+                                    onTap: () {},
+                                  ),
+                                  AchievementCard(
+                                    title: 'Total Hospital',
+                                    count: profileData.achivementModel!.totalHospital.toString(),
+                                    imagePath: 'assets/icon/app_icons/hospital-building.png',
+                                    onTap: () {},
+                                  ),
+                                  AchievementCard(
+                                    title: 'Total University',
+                                    count: profileData.achivementModel!.totalUniversity.toString(),
+                                    imagePath: 'assets/icon/app_icons/school.png',
+                                    onTap: () {},
+                                  ),
+                                  AchievementCard(
+                                    title: 'Total Groups',
+                                    count: profileData.achivementModel!.totalGroup.toString(),
+                                    imagePath: 'assets/icon/app_icons/donors.png',
+                                    onTap: () {},
+                                  ),
+                                  AchievementCard(
+                                    title: 'Total Events',
+                                    count: profileData.achivementModel!.totalEvent.toString(),
+                                    imagePath: 'assets/icon/app_icons/people.png',
+                                    onTap: () {},
+                                  ),
+                                ],
+                              )
+                            : Container(),
+                      );
+                    }),
+
+                    AppSpaces.spaces_height_10,
+
+                    Divider(
+                      thickness: 1.0,
+                      color: AppColors.primaryColor.withOpacity(.3),
                     ),
-                    AppSpaces.spaces_height_15,
+
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            'Upcoming Requests',
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Get.toNamed(requestList);
+                            },
+                            child: const Icon(
+                              Icons.arrow_forward_ios_rounded,
+                              size: 20,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    Divider(
+                      thickness: 1.0,
+                      color: AppColors.primaryColor.withOpacity(.3),
+                    ),
+
+                    AppSpaces.spaces_height_10,
 
                     Consumer<BloodRequestController>(builder: (context, bloodData, child) {
-                      return bloodData.runningBloodRequestModel != null && bloodData.myResponseModel != null
+                      return prefs!.getBool('guestLogIn') == true && bloodData.runningBloodRequestModel != null
                           ? Container(
                               height: 185,
                               child: ListView.builder(
@@ -204,33 +269,71 @@ class _HomeState extends State<Home> {
                                       ? 5
                                       : bloodData.runningBloodRequestModel!.requestList!.length,
                                   itemBuilder: (context, index) {
-                                    return bloodData.runningBloodRequestModel!.requestList![index].requestBy.toString() == prefs!.getString('userId')
-                                        ? Container()
-                                        : RequestCardHome(
-                                            accepted: bloodData.myResponseModel!.data!.where((e) {
+                                    return RequestCardHome(
+                                      accepted: bloodData.myResponseModel != null
+                                          ? bloodData.myResponseModel!.data!.where((e) {
                                               return e.requestId.toString() == bloodData.runningBloodRequestModel!.requestList![index].id.toString();
-                                            }).toList(),
-                                            index: index,
-                                            fromWhere: 'home',
-                                            runningRequestList: bloodData.runningBloodRequestModel!.requestList![index],
-                                            onTap: () {
-                                              var body = {
-                                                "request_id": bloodData.runningBloodRequestModel!.requestList![index].id,
-                                                "request_by": bloodData.runningBloodRequestModel!.requestList![index].requestBy,
-                                                "user": prefs!.getString('userId'),
-                                                "donor_id": prefs!.getString('donorId'),
-                                              };
-                                              bloodData.acceptRequest(context, body);
-
-                                              // BloodRequestFunction.showRequestDialog(
-                                              //   context,
-                                              //   bloodData.runningBloodRequestModel!.requestList![index],
-                                              // );
-                                            },
-                                          );
+                                            }).toList()
+                                          : [],
+                                      index: index,
+                                      fromWhere: 'home',
+                                      runningRequestList: bloodData.runningBloodRequestModel!.requestList![index],
+                                      onTap: () {
+                                        Flushbar(
+                                            flushbarPosition: FlushbarPosition.BOTTOM,
+                                            isDismissible: false,
+                                            backgroundColor: AppColors.lime,
+                                            duration: const Duration(seconds: 3),
+                                            messageText: Text(
+                                              "Please Login First",
+                                              style: TextStyle(
+                                                fontSize: 16.0,
+                                                color: AppColors.darkGreen,
+                                              ),
+                                            )).show(context);
+                                      },
+                                    );
                                   }),
                             )
-                          : Container();
+                          : bloodData.runningBloodRequestModel != null && bloodData.myResponseModel != null
+                              ? Container(
+                                  height: 185,
+                                  child: ListView.builder(
+                                      scrollDirection: Axis.horizontal,
+                                      shrinkWrap: true,
+                                      itemCount: bloodData.runningBloodRequestModel!.requestList!.length > 5
+                                          ? 5
+                                          : bloodData.runningBloodRequestModel!.requestList!.length,
+                                      itemBuilder: (context, index) {
+                                        return bloodData.runningBloodRequestModel!.requestList![index].requestBy.toString() ==
+                                                prefs!.getString('userId')
+                                            ? Container()
+                                            : RequestCardHome(
+                                                accepted: bloodData.myResponseModel!.data!.where((e) {
+                                                  return e.requestId.toString() ==
+                                                      bloodData.runningBloodRequestModel!.requestList![index].id.toString();
+                                                }).toList(),
+                                                index: index,
+                                                fromWhere: 'home',
+                                                runningRequestList: bloodData.runningBloodRequestModel!.requestList![index],
+                                                onTap: () {
+                                                  var body = {
+                                                    "request_id": bloodData.runningBloodRequestModel!.requestList![index].id,
+                                                    "request_by": bloodData.runningBloodRequestModel!.requestList![index].requestBy,
+                                                    "user": prefs!.getString('userId'),
+                                                    "donor_id": prefs!.getString('donorId'),
+                                                  };
+                                                  prefs!.getBool('guestLogIn') == true ? '' : bloodData.acceptRequest(context, body);
+
+                                                  // BloodRequestFunction.showRequestDialog(
+                                                  //   context,
+                                                  //   bloodData.runningBloodRequestModel!.requestList![index],
+                                                  // );
+                                                },
+                                              );
+                                      }),
+                                )
+                              : Container();
                     }),
 
                     AppSpaces.spaces_height_20,

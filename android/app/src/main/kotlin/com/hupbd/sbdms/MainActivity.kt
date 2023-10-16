@@ -1,4 +1,4 @@
-package com.example.blood_apps
+package com.hupbd.sbdms
 
 import io.flutter.embedding.android.FlutterActivity
 

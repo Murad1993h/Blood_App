@@ -13,6 +13,8 @@ import '../../../helpers/dropdown/dropdown_menu_item.dart';
 import '../../../helpers/dropdown/menu_items.dart';
 
 class SignUp extends StatefulWidget {
+  const SignUp({super.key});
+
   @override
   State<SignUp> createState() => _SignUpState();
 }
