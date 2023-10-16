@@ -1,8 +1,6 @@
-import 'package:blood_apps/authentication/signup_up.dart';
 import 'package:blood_apps/route/route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class SignIn extends StatelessWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -24,8 +22,7 @@ class SignIn extends StatelessWidget {
       ),*/
       body: SafeArea(
         child: SingleChildScrollView(
-          child:
-          Column(
+          child: Column(
             children: [
               Padding(
                 padding: const EdgeInsets.all(20),
@@ -34,9 +31,9 @@ class SignIn extends StatelessWidget {
                   children: [
                     Text(
                       "sign_in".tr,
-                      style: TextStyle(fontSize: 25),
+                      style: const TextStyle(fontSize: 25),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 25,
                       height: 25,
                       child: CircleAvatar(
@@ -53,8 +50,8 @@ class SignIn extends StatelessWidget {
               const SizedBox(
                 height: 25,
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 40),
+              const Padding(
+                padding: EdgeInsets.only(left: 40),
                 child: Row(
                   children: [
                     Column(
@@ -79,7 +76,7 @@ class SignIn extends StatelessWidget {
                     filled: true,
                     fillColor: Colors.grey[200],
 
-                    labelStyle: TextStyle(
+                    labelStyle: const TextStyle(
                       color: Colors.black26,
                     ),
                     // labelText: 'NAME',
@@ -90,8 +87,8 @@ class SignIn extends StatelessWidget {
               const SizedBox(
                 height: 25,
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 40),
+              const Padding(
+                padding: EdgeInsets.only(left: 40),
                 child: Row(
                   children: [
                     Column(
@@ -117,12 +114,12 @@ class SignIn extends StatelessWidget {
                     filled: true,
                     fillColor: Colors.grey[200],
 
-                    labelStyle: TextStyle(
+                    labelStyle: const TextStyle(
                       color: Colors.black26,
                     ),
                     // labelText: 'NAME',
                     hintText: 'Insert your Password here',
-                    suffixIcon: Icon(Icons.visibility),
+                    suffixIcon: const Icon(Icons.visibility),
                   ),
                 ),
               ),
@@ -137,7 +134,7 @@ class SignIn extends StatelessWidget {
                       children: [
                         TextButton(
                           onPressed: () => Get.toNamed(forgotpassword),
-                          child: Text(
+                          child: const Text(
                             "Forgot Password?",
                             style: TextStyle(
                               color: Colors.purple,
@@ -155,7 +152,7 @@ class SignIn extends StatelessWidget {
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   primary: Colors.purple,
-                  padding: EdgeInsets.symmetric(horizontal: 120, vertical: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 120, vertical: 20),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -163,7 +160,7 @@ class SignIn extends StatelessWidget {
                 onPressed: () {
                   // Button press action
                 },
-                child: Text(
+                child: const Text(
                   'Sign in',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
@@ -171,44 +168,23 @@ class SignIn extends StatelessWidget {
               const SizedBox(
                 height: 15,
               ),
-              Text(
+              const Text(
                 "-  or  -",
                 style: TextStyle(fontSize: 20),
               ),
               const SizedBox(
                 height: 20,
               ),
-              Text(
+              const Text(
                 "Connect with",
                 style: TextStyle(fontSize: 20),
               ),
               const SizedBox(
                 height: 20,
               ),
-
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                Column(
-                  children: [
-                    SizedBox(
-                      width: 60,
-                      height: 60,
-                      child: CircleAvatar(
-                        backgroundColor: Colors.purple,
-                        child: Icon(
-                          Icons.call,size: 35,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text("Phone"),
-                    ),
-                  ],
-                ),
-                SizedBox(width: 15,),
                   Column(
                     children: [
                       SizedBox(
@@ -217,18 +193,44 @@ class SignIn extends StatelessWidget {
                         child: CircleAvatar(
                           backgroundColor: Colors.purple,
                           child: Icon(
-                            Icons.mail_outline_sharp,size: 35,
+                            Icons.call,
+                            size: 35,
                             color: Colors.white,
                           ),
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(8.0),
+                        child: Text("Phone"),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Column(
+                    children: [
+                      SizedBox(
+                        width: 60,
+                        height: 60,
+                        child: CircleAvatar(
+                          backgroundColor: Colors.purple,
+                          child: Icon(
+                            Icons.mail_outline_sharp,
+                            size: 35,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(8.0),
                         child: Text("E-mail"),
                       ),
                     ],
                   ),
-                  SizedBox(width: 15,),
+                  SizedBox(
+                    width: 15,
+                  ),
                   Column(
                     children: [
                       SizedBox(
@@ -237,34 +239,34 @@ class SignIn extends StatelessWidget {
                         child: CircleAvatar(
                           backgroundColor: Colors.purple,
                           child: Icon(
-                            Icons.dashboard,size: 35,
+                            Icons.dashboard,
+                            size: 35,
                             color: Colors.white,
                           ),
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(8.0),
                         child: Text("Other"),
                       )
                     ],
                   ),
-              ],),
+                ],
+              ),
               const SizedBox(
                 height: 20,
               ),
               TextButton(
-               /* style: ButtonStyle(
+                /* style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(Colors.black12),
                 ),*/
 
                 onPressed: () => Get.toNamed(signupup),
-                child:
-                Text(
+                child: const Text(
                   "Create an Account",
                   style: TextStyle(fontSize: 25, color: Colors.purple),
                 ),
               ),
-
             ],
           ),
         ),

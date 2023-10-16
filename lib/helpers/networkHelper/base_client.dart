@@ -5,6 +5,8 @@ import 'dart:io';
 import 'package:blood_apps/helpers/networkHelper/app_extention.dart';
 import 'package:http/http.dart' as http;
 
+import '../../main.dart';
+
 class BaseClient {
   static const int TIME_OUT_DURATION = 20;
 
@@ -12,16 +14,15 @@ class BaseClient {
   Future<dynamic> get(String baseUrl, String api) async {
     var uri = Uri.parse(baseUrl + api);
 
-    print(uri);
-
+    // debugPrint(uri.toString());
     try {
-      print(uri);
       var response = await http.get(uri, headers: {
-        // 'Authorization': 'Bearer ${prefs!.getString("token")}',
-        'Version': '10',
+        'Authorization': 'Bearer ${prefs!.getString("token")}' ?? '',
         HttpHeaders.contentTypeHeader: 'application/json',
         HttpHeaders.acceptHeader: 'application/json',
       }).timeout(const Duration(seconds: TIME_OUT_DURATION));
+      // debugPrint(response.body.toString());
+
       return _processResponse(response);
     } on SocketException {
       throw FetchDataException('Server connection failed', uri.toString());
@@ -36,7 +37,7 @@ class BaseClient {
     var payload = json.encode(payloadObj);
     try {
       var response = await http.post(uri, body: payload, headers: {
-        // 'Authorization': 'Bearer ${prefs!.getString('token')}',
+        'Authorization': 'Bearer ${prefs!.getString('token')}',
         HttpHeaders.contentTypeHeader: 'application/json',
         HttpHeaders.acceptHeader: 'application/json',
       }).timeout(const Duration(seconds: TIME_OUT_DURATION));
@@ -74,7 +75,7 @@ class BaseClient {
       case 500:
         throw ServerError(utf8.decode(response.bodyBytes), response.request!.url.toString());
       default:
-        throw FetchDataException('Error occured with code : ${response.statusCode}', response.request!.url.toString());
+        throw FetchDataException('Error occurred with code : ${response.statusCode}', response.request!.url.toString());
     }
   }
 }

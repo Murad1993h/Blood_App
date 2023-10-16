@@ -1,3 +1,4 @@
+import 'package:blood_apps/authentication/controllers/authController.dart';
 import 'package:blood_apps/helpers/app_colors.dart';
 import 'package:blood_apps/helpers/app_spaces.dart';
 import 'package:blood_apps/pages/profile/controllers/profile_controller.dart';
@@ -33,22 +34,28 @@ class _SignUpState extends State<SignUp> {
 
   num? divisionId = -1;
   num? districtId = -1;
+  num? thanaId = -1;
   TextEditingController? division = TextEditingController(text: '');
   TextEditingController? searchDivision = TextEditingController(text: '');
   TextEditingController? district = TextEditingController(text: '');
   TextEditingController? searchDistrict = TextEditingController(text: '');
   TextEditingController? thana = TextEditingController(text: '');
 
+  num? hospitalId = -1;
+  num? universityId = -1;
+  num? groupId = -1;
   TextEditingController? hospital = TextEditingController(text: '');
   TextEditingController? occupation = TextEditingController(text: '');
   TextEditingController? university = TextEditingController(text: '');
   TextEditingController? group = TextEditingController(text: '');
   TextEditingController? referralID = TextEditingController(text: '');
 
+  AuthController? authController;
+
   @override
   void initState() {
     donationDate = TextEditingController(text: '');
-
+    authController = Provider.of<AuthController>(context, listen: false);
     super.initState();
   }
 
@@ -222,7 +229,7 @@ class _SignUpState extends State<SignUp> {
                                 borderRadius: BorderRadius.circular(5.0),
                                 borderSide: BorderSide.none,
                               ),
-                              floatingLabelBehavior: FloatingLabelBehavior.auto,
+                              // floatingLabelBehavior: FloatingLabelBehavior.auto,
                               focusColor: AppColors.primaryColor,
                               isDense: true,
                               contentPadding: const EdgeInsets.all(8.0),
@@ -230,10 +237,16 @@ class _SignUpState extends State<SignUp> {
                                 'First name'.tr,
                                 style: const TextStyle(color: Colors.black54, fontSize: 12),
                               ),
-                              alignLabelWithHint: false,
+                              // alignLabelWithHint: false,
                             ),
                             onChanged: (value) {
+                              print(value);
                               firstName!.text = value;
+
+                              print(firstName!.text);
+                              firstName!.selection = TextSelection.fromPosition(
+                                TextPosition(offset: firstName!.text.length),
+                              );
                             },
                           ),
                         ),
@@ -272,6 +285,9 @@ class _SignUpState extends State<SignUp> {
                             ),
                             onChanged: (value) {
                               lastName!.text = value;
+                              lastName!.selection = TextSelection.fromPosition(
+                                TextPosition(offset: lastName!.text.length),
+                              );
                             },
                           ),
                         ),
@@ -314,6 +330,9 @@ class _SignUpState extends State<SignUp> {
                             ),
                             onChanged: (value) {
                               emailAddress!.text = value;
+                              emailAddress!.selection = TextSelection.fromPosition(
+                                TextPosition(offset: emailAddress!.text.length),
+                              );
                             },
                           ),
                         ),
@@ -352,6 +371,9 @@ class _SignUpState extends State<SignUp> {
                             ),
                             onChanged: (value) {
                               mobile!.text = value;
+                              mobile!.selection = TextSelection.fromPosition(
+                                TextPosition(offset: mobile!.text.length),
+                              );
                             },
                           ),
                         ),
@@ -509,7 +531,7 @@ class _SignUpState extends State<SignUp> {
                                 child: DateTimePicker(
                                   // focusNode: _focusDDateNode,
                                   type: DateTimePickerType.date,
-                                  controller: donationDate,
+                                  controller: DoB,
                                   calendarTitle: 'Date of Birth',
                                   textAlign: TextAlign.left,
                                   decoration: InputDecoration(
@@ -914,6 +936,8 @@ class _SignUpState extends State<SignUp> {
                               s = value;
                               setState(() {
                                 thana!.text = value!.text;
+
+                                thanaId = profileData.locationModel!.thana!.firstWhere((element) => element.name == thana!.text).id;
                               });
                             },
                             dropdownStyleData: DropdownStyleData(
@@ -939,7 +963,7 @@ class _SignUpState extends State<SignUp> {
                       ),
                     ),
 
-                    ///District
+                    ///Hospital
                     Expanded(
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 8.0),
@@ -984,6 +1008,8 @@ class _SignUpState extends State<SignUp> {
                               s = value;
                               setState(() {
                                 hospital!.text = value!.text;
+
+                                hospitalId = profileData.hospitalModel!.data!.firstWhere((element) => element.name == hospital!.text).id;
                               });
                             },
                             dropdownStyleData: DropdownStyleData(
@@ -1042,21 +1068,14 @@ class _SignUpState extends State<SignUp> {
                               ),
                             ),
                             items: [
-                              ...profileData.groupModel!.data!.map(
+                              ...OccupationItems.firstItems.map(
                                 (item) => DropdownMenuItem<MenuItem>(
-                                  value: MenuItem(text: item.name.toString()),
-                                  child: Text(
-                                    item.name.toString(),
-                                    style: TextStyle(
-                                      color: AppColors.primaryColor,
-                                    ),
-                                  ),
+                                  value: item,
+                                  child: OccupationItems.buildItem(item),
                                 ),
                               ),
                             ],
                             onChanged: (value) {
-                              MenuItem? s;
-                              s = value;
                               setState(() {
                                 occupation!.text = value!.text;
                               });
@@ -1074,7 +1093,7 @@ class _SignUpState extends State<SignUp> {
                             ),
                             menuItemStyleData: MenuItemStyleData(
                               customHeights: [
-                                ...List<double>.filled(profileData.groupModel!.data!.length, 48),
+                                ...List<double>.filled(OccupationItems.firstItems.length, 48),
                               ],
                               padding: const EdgeInsets.only(left: 16, right: 16),
                             ),
@@ -1084,7 +1103,7 @@ class _SignUpState extends State<SignUp> {
                     ),
 
                     ///University
-                    occupation!.text != 'student'
+                    occupation!.text != 'Student'
                         ? Container()
                         : Expanded(
                             child: Padding(
@@ -1114,7 +1133,7 @@ class _SignUpState extends State<SignUp> {
                                     ),
                                   ),
                                   items: [
-                                    ...profileData.groupModel!.data!.map(
+                                    ...profileData.universityModel!.data!.map(
                                       (item) => DropdownMenuItem<MenuItem>(
                                         value: MenuItem(text: item.name.toString()),
                                         child: Text(
@@ -1131,6 +1150,7 @@ class _SignUpState extends State<SignUp> {
                                     s = value;
                                     setState(() {
                                       university!.text = value!.text;
+                                      // universityId = profileData.un!.thana!.firstWhere((element) => element.name == thana!.text).id;
                                     });
                                   },
                                   dropdownStyleData: DropdownStyleData(
@@ -1146,7 +1166,7 @@ class _SignUpState extends State<SignUp> {
                                   ),
                                   menuItemStyleData: MenuItemStyleData(
                                     customHeights: [
-                                      ...List<double>.filled(profileData.groupModel!.data!.length, 48),
+                                      ...List<double>.filled(profileData.universityModel!.data!.length, 48),
                                     ],
                                     padding: const EdgeInsets.only(left: 16, right: 16),
                                   ),
@@ -1237,11 +1257,9 @@ class _SignUpState extends State<SignUp> {
                               ),
                             ],
                             onChanged: (value) {
-                              MenuItem? s;
-
-                              s = value;
                               setState(() {
                                 group!.text = value!.text;
+                                groupId = profileData.groupModel!.data!.firstWhere((element) => element.name == group!.text).id;
                               });
                             },
                             dropdownStyleData: DropdownStyleData(
@@ -1351,7 +1369,47 @@ class _SignUpState extends State<SignUp> {
                       borderRadius: BorderRadius.circular(5),
                     ),
                   ),
-                  onPressed: () => Get.toNamed(home),
+                  onPressed: () {
+                    var body = {
+                      'donate_check': askDonation, //required
+                      'last_donate_date': donationDate!.text,
+                      'first_name': firstName!.text, //required
+                      'last_name': lastName!.text, //required
+                      'email': emailAddress!.text, //required
+                      'mobile': mobile!.text, //required
+                      'blood_group': bloodGroup!.text, //required
+                      'birth_date': DoB!.text, //required
+                      'age': age!.text, //required
+                      'gender': gender!.text, //required
+                      'division_id': divisionId, //required
+                      'district_id': districtId, //required
+                      'thana_id': thanaId, //required
+                      'occupation': occupation!.text, //required
+                      'university_id': universityId,
+                      'hospital_id': hospitalId, //required
+                      'refer_id': referralID!.text,
+                      'interested_work': workInterest,
+                      'group_check': askGroup, //required
+                      'group_id': groupId,
+                      'address': '${thana!.text}, ${district!.text}, ${division!.text}',
+                      'address_latitude': '',
+                      'address_longitude': '',
+                      'agree': 'yes', //required
+                      'status': 1,
+                      'live_address_check': '',
+                      'weight': '',
+                      'height': '',
+                      'nid_no': '',
+                      'facebook_id': '',
+                      'instagram_id': '',
+                      'youtube_id': '',
+                      'linkedIn_id': '',
+                      'image': '',
+                      'password': ''
+                    };
+
+                    authController!.registration(context, body);
+                  },
                   child: Text(
                     'Sign up'.tr,
                     style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
@@ -1363,11 +1421,12 @@ class _SignUpState extends State<SignUp> {
                     children: [
                       Text("Already have an account".tr),
                       TextButton(
-                          onPressed: () => Get.toNamed(signup),
-                          child: Text(
-                            "LOGIN".tr,
-                            style: TextStyle(color: AppColors.primaryColor),
-                          )),
+                        onPressed: () => Get.toNamed(login),
+                        child: Text(
+                          "LOGIN".tr,
+                          style: TextStyle(color: AppColors.primaryColor),
+                        ),
+                      ),
                     ],
                   ),
                 ),

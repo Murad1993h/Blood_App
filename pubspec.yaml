@@ -35,8 +35,8 @@ dependencies:
   flutter_screenutil: ^5.7.0
   easy_onboard: ^1.0.2
   flutter_otp_text_field: ^1.1.1
-  flutter_zoom_drawer: ^3.0.4+1
-  shared_preferences: ^2.1.0
+  flutter_zoom_drawer: ^3.1.1
+  shared_preferences:
   toggle_switch: ^2.0.1
   animated_custom_dropdown: ^1.5.0
   fsearch: ^2.0.0
@@ -47,7 +47,16 @@ dependencies:
   google_fonts: ^5.1.0
   date_time_picker: ^2.1.0
   dropdown_button2: ^2.3.8
-
+  another_flushbar: ^1.12.30
+  cached_network_image: ^3.2.3
+  carousel_slider:
+  google_maps_flutter: ^2.5.0
+  location: ^5.0.3
+  readmore: ^2.2.0
+  flutter_sslcommerz:
+  fluttertoast: ^8.2.2
+  uuid: ^4.1.0
+  jiffy:
 
 
   # The following adds the Cupertino Icons font to your application.

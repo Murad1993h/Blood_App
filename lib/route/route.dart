@@ -2,20 +2,24 @@ import 'package:blood_apps/authentication/forgot_password.dart';
 import 'package:blood_apps/authentication/login/login.dart';
 import 'package:blood_apps/authentication/sign_in.dart';
 import 'package:blood_apps/authentication/signup_up.dart';
-import 'package:blood_apps/landingPage/blood_request/blood_requet.dart';
-import 'package:blood_apps/landingPage/blood_request/request_details/request_details.dart';
 import 'package:blood_apps/landingPage/exampol.dart';
 import 'package:blood_apps/landingPage/landing_page.dart';
-import 'package:blood_apps/landingPage/notification/notification.dart';
+import 'package:blood_apps/pages/blood_request/blood_request_list.dart';
+import 'package:blood_apps/pages/blood_request/view/accepted_donors.dart';
+import 'package:blood_apps/pages/menu_pages/hospital_list.dart';
 import 'package:blood_apps/pages/profile/views/profile.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
 import '../authentication/signup_up/views/sign_up.dart';
-import '../landingPage/blood_request/request/request.dart';
-import '../landingPage/home.dart';
 import '../languages/button.dart';
 import '../onbording/new_onbording.dart';
+import '../pages/blood_request/create_blood_request.dart';
+import '../pages/home/home.dart';
+import '../pages/menu_pages/components/hospital/hospital_view.dart';
+import '../pages/menu_pages/my_request_list.dart';
+import '../pages/menu_pages/university_list.dart';
 import '../pages/message/messages.dart';
+import '../pages/notification/notification.dart';
 import '../splash/splash_screen.dart';
 
 const String splash = '/splash-screen';
@@ -32,12 +36,17 @@ const String landing = '/Landing';
 const String exampol = '/Exampol';
 const String sms = '/Sma';
 const String massages = '/Massages';
-const String bloodrequest = '/Blood-Request';
-const String request = '/Request';
-const String requestdetails = '/RequestDetalies';
+const String bloodRequest = '/blood-Request';
+const String requestList = '/request-list';
+const String myRequestList = '/my-request-list';
+const String requestDetails = '/RequestDetails';
 const String onbordings = '/Onbordings';
 const String notification = '/NotifiCation';
 const String button = '/Button';
+const String universityList = '/university-list';
+const String hospitalList = '/hospital-list';
+const String hospitalView = '/hospital-view';
+const String acceptedDonors = '/accepted-donors';
 
 List<GetPage> getPages = [
   GetPage(
@@ -51,7 +60,7 @@ List<GetPage> getPages = [
 
   GetPage(
     name: login,
-    page: () => LogIn(),
+    page: () => const LogIn(),
   ),
   GetPage(
     name: signup,
@@ -59,44 +68,36 @@ List<GetPage> getPages = [
   ),
   GetPage(
     name: signin,
-    page: () => SignIn(),
+    page: () => const SignIn(),
   ),
   GetPage(
     name: signupup,
-    page: () => SignupUp(),
+    page: () => const SignupUp(),
   ),
   GetPage(
     name: forgotpassword,
-    page: () => ForgotPassword(),
+    page: () => const ForgotPassword(),
   ),
   GetPage(
     name: profile,
-    page: () => Profile(),
+    page: () => const Profile(),
   ),
   GetPage(
     name: home,
-    page: () => Home(),
+    page: () => const Home(),
   ),
   GetPage(
     name: exampol,
-    page: () => Exampol(),
+    page: () => const Exampol(),
   ),
   //GetPage(name: sms, page: () => sms(),),
   GetPage(
     name: massages,
-    page: () => Massages(),
+    page: () => const Massages(),
   ),
   GetPage(
-    name: bloodrequest,
-    page: () => BloodRequest(),
-  ),
-  GetPage(
-    name: request,
-    page: () => Request(),
-  ),
-  GetPage(
-    name: requestdetails,
-    page: () => RequestDatails(),
+    name: bloodRequest,
+    page: () => const CreateBloodRequest(),
   ),
   GetPage(
     name: onbordings,
@@ -104,10 +105,34 @@ List<GetPage> getPages = [
   ),
   GetPage(
     name: notification,
-    page: () => NotifiCation(),
+    page: () => const NotifiCation(),
   ),
   GetPage(
     name: button,
-    page: () => Button(),
+    page: () => const Button(),
+  ),
+  GetPage(
+    name: universityList,
+    page: () => const UniversityList(),
+  ),
+  GetPage(
+    name: hospitalList,
+    page: () => const HospitalList(),
+  ),
+  GetPage(
+    name: hospitalView,
+    page: () => const HospitalView(),
+  ),
+  GetPage(
+    name: myRequestList,
+    page: () => const MyRequestList(),
+  ),
+  GetPage(
+    name: requestList,
+    page: () => const BloodRequestList(),
+  ),
+  GetPage(
+    name: acceptedDonors,
+    page: () => const DonorProfiles(),
   ),
 ];

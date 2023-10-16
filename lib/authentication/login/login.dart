@@ -1,8 +1,16 @@
+import 'package:blood_apps/helpers/app_spaces.dart';
+import 'package:blood_apps/main.dart';
 import 'package:blood_apps/route/route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
+
+import '../../helpers/app_colors.dart';
+import '../controllers/authController.dart';
 
 class LogIn extends StatefulWidget {
+  const LogIn({super.key});
+
   @override
   State<LogIn> createState() => _LogInState();
 }
@@ -11,191 +19,217 @@ class _LogInState extends State<LogIn> {
   //const LogIn({Key? key}) : super(key: key);
   // bool _isChecked = false;
 
+  TextEditingController? emailAddress = TextEditingController();
+  TextEditingController? password = TextEditingController();
+  AuthController? authController;
+
+  @override
+  void initState() {
+    authController = Provider.of<AuthController>(context, listen: false);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     bool _isChecked = false;
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.only(top: 150),
-            child: Container(
-              height: 530,
-              width: 500,
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 30),
-                      child: Text(
-                        "Welcome back".tr,
-                        style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                      ),
+      // appBar: AppBar(
+      //   backgroundColor: AppColors.white,
+      //   elevation: 0.0,
+      // ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 30),
+              child: Text(
+                "Welcome back".tr,
+                style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              ),
+            ),
+            //InkWell(child: Text("Sign in to continue.")),
+            Text(
+              "Log in your account.".tr,
+              style: const TextStyle(fontSize: 15, color: Colors.black38),
+            ),
+            AppSpaces.spaces_height_15,
+            Padding(
+              padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 8.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: AppColors.black12.withOpacity(.03),
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
+                child: TextField(
+                  controller: emailAddress,
+                  decoration: InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                      borderSide: BorderSide.none,
                     ),
-                    //InkWell(child: Text("Sign in to continue.")),
-                    Text(
-                      "Log in your account.".tr,
-                      style: TextStyle(fontSize: 15, color: Colors.black38),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                      borderSide: BorderSide.none,
                     ),
-                    const SizedBox(
-                      height: 25,
+                    floatingLabelBehavior: FloatingLabelBehavior.auto,
+                    focusColor: AppColors.primaryColor,
+                    isDense: true,
+                    contentPadding: const EdgeInsets.all(8.0),
+                    label: Text(
+                      'Email'.tr,
+                      style: const TextStyle(color: Colors.black54, fontSize: 12),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 40),
-                      child: Row(
-                        children: [
-                          Column(
-                            children: [
-                              Text(
-                                "Phone Numbar".tr,
-                                style: TextStyle(fontSize: 10),
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        top: 5,
-                        left: 40,
-                        right: 40,
-                      ),
-                      child: TextFormField(
-                        keyboardType: TextInputType.number,
-                        decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.phone_android),
-                          labelText: "Enter mobile numbar".tr,
-                          contentPadding: EdgeInsets.symmetric(vertical: 9.0, horizontal: 20.0),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                            borderSide: BorderSide.none,
-                          ),
-                          filled: true,
-                          fillColor: Colors.grey[200],
-
-                          labelStyle: TextStyle(
-                            color: Colors.black26,
-                          ),
-                          // labelText: 'NAME',
-                          // hintText: "Enter mobile numbar".tr,
-                          hintStyle: TextStyle(fontSize: 12.0),
-                        ),
-                      ),
-                    ),
-
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 40),
-                      child: Row(
-                        children: [
-                          Column(
-                            children: [
-                              Text(
-                                "PASSWORD".tr,
-                                style: TextStyle(fontSize: 10),
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        top: 5,
-                        left: 40,
-                        right: 40,
-                      ),
-                      child: TextFormField(
-                        obscureText: true,
-                        keyboardType: TextInputType.text,
-                        decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.lock_outline),
-                          labelText: '..........',
-                          suffixIcon: Icon(Icons.visibility),
-                          contentPadding: EdgeInsets.symmetric(vertical: 9.0, horizontal: 20.0),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                            borderSide: BorderSide.none,
-                          ),
-                          filled: true,
-                          fillColor: Colors.grey[200],
-
-                          labelStyle: TextStyle(
-                            color: Colors.black26,
-                          ),
-                          //labelText: 'PASSWORD',
-                          // hintText: '..........',
-                          hintStyle: TextStyle(fontSize: 12.0),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 40),
-                      child: Row(
-                        children: [
-                          Checkbox(
-                            value: _isChecked,
-                            // shape: CircleBorder(),
-                            visualDensity: VisualDensity.compact,
-                            onChanged: (value) {
-                              setState(() {
-                                _isChecked = value!;
-                              });
-                            },
-                          ),
-                          Text(
-                            "Remember me".tr,
-                            style: TextStyle(color: Colors.black38),
-                          ),
-                          TextButton(
-                            onPressed: () => Get.toNamed(forgotpassword),
-                            child: Text("FORGOTE PASSWORD".tr, style: TextStyle(color: Colors.black38)),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.red,
-                        padding: EdgeInsets.symmetric(horizontal: 100, vertical: 10),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                      onPressed: () => Get.toNamed(landing),
-                      child: Text(
-                        'log_in'.tr,
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ),
-
-                    Padding(
-                      padding: const EdgeInsets.only(left: 70),
-                      child: Row(
-                        children: [
-                          Text("Don't have an account yet?".tr),
-                          TextButton(
-                              onPressed: () => Get.toNamed(signup),
-                              child: Text(
-                                "Signup".tr,
-                                style: TextStyle(color: Colors.red),
-                              )),
-                        ],
-                      ),
-                    ),
-                  ],
+                    alignLabelWithHint: false,
+                  ),
+                  onChanged: (value) {
+                    emailAddress!.text = value;
+                    emailAddress!.selection = TextSelection.fromPosition(
+                      TextPosition(offset: emailAddress!.text.length),
+                    );
+                  },
                 ),
               ),
             ),
-          ),
+
+            AppSpaces.spaces_height_15,
+            Padding(
+              padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 8.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: AppColors.black12.withOpacity(.03),
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
+                child: TextField(
+                  controller: password,
+                  decoration: InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                      borderSide: BorderSide.none,
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                      borderSide: BorderSide.none,
+                    ),
+                    floatingLabelBehavior: FloatingLabelBehavior.auto,
+                    focusColor: AppColors.primaryColor,
+                    isDense: true,
+                    contentPadding: const EdgeInsets.all(8.0),
+                    label: Text(
+                      'Password'.tr,
+                      style: const TextStyle(color: Colors.black54, fontSize: 12),
+                    ),
+                    alignLabelWithHint: false,
+                  ),
+                  onChanged: (value) {
+                    password!.text = value;
+                    password!.selection = TextSelection.fromPosition(
+                      TextPosition(offset: password!.text.length),
+                    );
+                  },
+                ),
+              ),
+            ),
+
+            Row(
+              children: [
+                Checkbox(
+                  value: _isChecked,
+                  // shape: CircleBorder(),
+                  visualDensity: VisualDensity.compact,
+                  onChanged: (value) {
+                    setState(() {
+                      _isChecked = value!;
+                    });
+                  },
+                ),
+                Text(
+                  "Remember me".tr,
+                  style: const TextStyle(color: Colors.black38),
+                ),
+                TextButton(
+                  onPressed: () => Get.toNamed(forgotpassword),
+                  child: Text("FORGOT PASSWORD".tr, style: const TextStyle(color: Colors.black38)),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: InkWell(
+                onTap: () {
+                  var body = {
+                    'email': emailAddress!.text,
+                    'password': password!.text,
+                  };
+
+                  // debugPrint(body['email']);
+                  authController!.logIn(context, body);
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  width: Get.width,
+                  decoration: BoxDecoration(
+                    color: AppColors.primaryColor,
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text(
+                      'log_in'.tr,
+                      style: TextStyle(fontWeight: FontWeight.bold, color: AppColors.white),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            AppSpaces.spaces_height_10,
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: InkWell(
+                onTap: () {
+                  prefs!.setBool('guestLogIn', true);
+                  Get.toNamed(landing);
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  width: Get.width,
+                  decoration: BoxDecoration(
+                      color: AppColors.white, borderRadius: BorderRadius.circular(5.0), border: Border.all(color: AppColors.primaryColor)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text(
+                      'guest_log_in'.tr,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.primaryColor,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.only(left: 70),
+              child: Row(
+                children: [
+                  Text("Don't have an account yet?".tr),
+                  TextButton(
+                    onPressed: () => Get.toNamed(signup),
+                    child: Text(
+                      "Signup".tr,
+                      style: const TextStyle(color: Colors.red),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );

@@ -1,6 +1,6 @@
 class HospitalModel {
   HospitalModel({
-    List<Data>? data,
+    List<HospitalData>? data,
   }) {
     _data = data;
   }
@@ -9,18 +9,21 @@ class HospitalModel {
     if (json['data'] != null) {
       _data = [];
       json['data'].forEach((v) {
-        _data?.add(Data.fromJson(v));
+        _data?.add(HospitalData.fromJson(v));
       });
     }
   }
-  List<Data>? _data;
+
+  List<HospitalData>? _data;
+
   HospitalModel copyWith({
-    List<Data>? data,
+    List<HospitalData>? data,
   }) =>
       HospitalModel(
         data: data ?? _data,
       );
-  List<Data>? get data => _data;
+
+  List<HospitalData>? get data => _data;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -31,8 +34,8 @@ class HospitalModel {
   }
 }
 
-class Data {
-  Data({
+class HospitalData {
+  HospitalData({
     num? id,
     String? name,
     String? mobile,
@@ -74,7 +77,7 @@ class Data {
     _updatedAt = updatedAt;
   }
 
-  Data.fromJson(dynamic json) {
+  HospitalData.fromJson(dynamic json) {
     _id = json['id'];
     _name = json['name'];
     _mobile = json['mobile'];
@@ -95,6 +98,7 @@ class Data {
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
   }
+
   num? _id;
   String? _name;
   String? _mobile;
@@ -114,7 +118,8 @@ class Data {
   num? _updatedBy;
   String? _createdAt;
   String? _updatedAt;
-  Data copyWith({
+
+  HospitalData copyWith({
     num? id,
     String? name,
     String? mobile,
@@ -135,7 +140,7 @@ class Data {
     String? createdAt,
     String? updatedAt,
   }) =>
-      Data(
+      HospitalData(
         id: id ?? _id,
         name: name ?? _name,
         mobile: mobile ?? _mobile,
@@ -156,24 +161,43 @@ class Data {
         createdAt: createdAt ?? _createdAt,
         updatedAt: updatedAt ?? _updatedAt,
       );
+
   num? get id => _id;
+
   String? get name => _name;
+
   String? get mobile => _mobile;
+
   String? get divisionId => _divisionId;
+
   String? get districtId => _districtId;
+
   String? get thanaId => _thanaId;
+
   String? get image => _image;
+
   String? get address => _address;
+
   String? get addressLatitude => _addressLatitude;
+
   String? get addressLongitude => _addressLongitude;
+
   String? get discount => _discount;
+
   dynamic get websiteUrl => _websiteUrl;
+
   num? get bloodBank => _bloodBank;
+
   String? get description => _description;
+
   num? get status => _status;
+
   num? get createdBy => _createdBy;
+
   num? get updatedBy => _updatedBy;
+
   String? get createdAt => _createdAt;
+
   String? get updatedAt => _updatedAt;
 
   Map<String, dynamic> toJson() {

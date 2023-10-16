@@ -2,6 +2,8 @@ import 'package:blood_apps/route/route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../helpers/app_colors.dart';
+
 class Onbordings extends StatefulWidget {
   @override
   _OnbordingsState createState() => _OnbordingsState();
@@ -53,16 +55,16 @@ class _OnbordingsState extends State<Onbordings> {
                       ),
                       Text(
                         contents[i].title,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 35,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Text(
                         contents[i].discription,
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 18,
                           color: Colors.grey,
                         ),
@@ -87,8 +89,8 @@ class _OnbordingsState extends State<Onbordings> {
             child: ElevatedButton(
               onPressed: () => Get.toNamed(login),
               style: ElevatedButton.styleFrom(
-                primary: Colors.red,
-                padding: EdgeInsets.symmetric(vertical: 10),
+                primary: AppColors.primaryColor,
+                padding: const EdgeInsets.symmetric(vertical: 10),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
@@ -97,8 +99,8 @@ class _OnbordingsState extends State<Onbordings> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text('GET STARTED'.tr),
-                  SizedBox(width: 5),
-                  Icon(
+                  const SizedBox(width: 5),
+                  const Icon(
                     Icons.navigate_next_outlined,
                     size: 30,
                   ),
@@ -116,10 +118,10 @@ class _OnbordingsState extends State<Onbordings> {
     return Container(
       height: 10,
       width: currentIndex == index ? 25 : 10,
-      margin: EdgeInsets.only(right: 5),
+      margin: const EdgeInsets.only(right: 5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: Colors.red,
+        color: AppColors.primaryColor,
       ),
     );
   }
