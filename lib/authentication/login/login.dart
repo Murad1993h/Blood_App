@@ -1,3 +1,4 @@
+import 'package:another_flushbar/flushbar.dart';
 import 'package:blood_apps/helpers/app_spaces.dart';
 import 'package:blood_apps/main.dart';
 import 'package:blood_apps/route/route.dart';
@@ -167,8 +168,20 @@ class _LogInState extends State<LogIn> {
                     'password': password!.text,
                   };
 
-                  // debugPrint(body['email']);
-                  authController!.logIn(context, body);
+                  emailAddress!.text.isNotEmpty && password!.text.isNotEmpty
+                      ? authController!.logIn(context, body)
+                      : Flushbar(
+                          flushbarPosition: FlushbarPosition.BOTTOM,
+                          isDismissible: false,
+                          backgroundColor: AppColors.lime,
+                          duration: const Duration(seconds: 3),
+                          messageText: Text(
+                            "Please Fill The Form First",
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              color: AppColors.darkGreen,
+                            ),
+                          )).show(context);
                 },
                 child: Container(
                   alignment: Alignment.center,
