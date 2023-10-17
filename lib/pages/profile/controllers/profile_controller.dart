@@ -72,6 +72,9 @@ class ProfileController extends ChangeNotifier {
     final response = await BaseClient().get(api_main_url, "hospital-list");
 
     var data = json.decode(response);
+
+    debugPrint("Hospital: " + data.toString());
+
     hospitalModel = HospitalModel.fromJson(data);
 
     notifyListeners();

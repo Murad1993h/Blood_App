@@ -79,33 +79,20 @@ class _RequestCardHomeState extends State<RequestCardHome> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          '${widget.runningRequestList!.patientName}',
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ],
-                    ),
-                    AppSpaces.spaces_height_5,
-                    Container(
-                      width: widget.fromWhere == 'home' ? Get.width * .65 : Get.width * .8,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Date",
-                                  style: TextStyle(
-                                    color: AppColors.black45,
-                                    fontSize: 10,
-                                  ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                '${widget.runningRequestList!.patientName}',
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
                                 ),
-                                AppSpaces.spaces_height_5,
+                              ),
+                            ),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
                                 Text(
                                   Jiffy(widget.runningRequestList!.date.toString()).format('MMM dd, yyyy'),
                                   style: const TextStyle(
@@ -114,7 +101,16 @@ class _RequestCardHomeState extends State<RequestCardHome> {
                                 ),
                               ],
                             ),
-                          ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    AppSpaces.spaces_height_10,
+                    Container(
+                      width: widget.fromWhere == 'home' ? Get.width * .65 : Get.width * .8,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [

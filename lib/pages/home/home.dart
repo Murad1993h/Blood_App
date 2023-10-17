@@ -42,19 +42,8 @@ class _HomeState extends State<Home> {
       bloodRequestController!.getMyResponseRequest(prefs!.getString('userId').toString());
       bloodRequestController!.getMyRequests();
     }
-    // homeController!.getSliders();
-    loadData();
-    super.initState();
-  }
 
-  void loadData() async {
-    debugPrint('Load Data');
-    await profileController!.getAchievement();
-    await profileController!.getLocations();
-    await profileController!.getHospital();
-    await profileController!.getGroupList();
-    await profileController!.getUniversityList();
-    await profileController!.getUsers();
+    super.initState();
   }
 
   @override
@@ -235,7 +224,7 @@ class _HomeState extends State<Home> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const Text(
-                            'Upcoming Requests',
+                            'Blood Requests',
                             style: TextStyle(fontSize: 16),
                           ),
                           InkWell(
@@ -260,78 +249,74 @@ class _HomeState extends State<Home> {
 
                     Consumer<BloodRequestController>(builder: (context, bloodData, child) {
                       return prefs!.getBool('guestLogIn') == true && bloodData.runningBloodRequestModel != null
-                          ? Container(
-                              height: 185,
-                              child: ListView.builder(
-                                  scrollDirection: Axis.horizontal,
-                                  shrinkWrap: true,
-                                  itemCount: bloodData.runningBloodRequestModel!.requestList!.length > 5
-                                      ? 5
-                                      : bloodData.runningBloodRequestModel!.requestList!.length,
-                                  itemBuilder: (context, index) {
-                                    return RequestCardHome(
-                                      accepted: bloodData.myResponseModel != null
-                                          ? bloodData.myResponseModel!.data!.where((e) {
-                                              return e.requestId.toString() == bloodData.runningBloodRequestModel!.requestList![index].id.toString();
-                                            }).toList()
-                                          : [],
-                                      index: index,
-                                      fromWhere: 'home',
-                                      runningRequestList: bloodData.runningBloodRequestModel!.requestList![index],
-                                      onTap: () {
-                                        Flushbar(
-                                            flushbarPosition: FlushbarPosition.BOTTOM,
-                                            isDismissible: false,
-                                            backgroundColor: AppColors.lime,
-                                            duration: const Duration(seconds: 3),
-                                            messageText: Text(
-                                              "Please Login First",
-                                              style: TextStyle(
-                                                fontSize: 16.0,
-                                                color: AppColors.darkGreen,
-                                              ),
-                                            )).show(context);
-                                      },
-                                    );
-                                  }),
-                            )
-                          : bloodData.runningBloodRequestModel != null && bloodData.myResponseModel != null
-                              ? Container(
-                                  height: 185,
-                                  child: ListView.builder(
-                                      scrollDirection: Axis.horizontal,
-                                      shrinkWrap: true,
-                                      itemCount: bloodData.runningBloodRequestModel!.requestList!.length > 5
-                                          ? 5
-                                          : bloodData.runningBloodRequestModel!.requestList!.length,
-                                      itemBuilder: (context, index) {
-                                        return bloodData.runningBloodRequestModel!.requestList![index].requestBy.toString() ==
-                                                prefs!.getString('userId')
-                                            ? Container()
-                                            : RequestCardHome(
-                                                accepted: bloodData.myResponseModel!.data!.where((e) {
+                          ? SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(
+                                children: List.generate(
+                                    bloodData.runningBloodRequestModel!.requestList!.length > 5
+                                        ? 5
+                                        : bloodData.runningBloodRequestModel!.requestList!.length,
+                                    (index) => RequestCardHome(
+                                          accepted: bloodData.myResponseModel != null
+                                              ? bloodData.myResponseModel!.data!.where((e) {
                                                   return e.requestId.toString() ==
                                                       bloodData.runningBloodRequestModel!.requestList![index].id.toString();
-                                                }).toList(),
-                                                index: index,
-                                                fromWhere: 'home',
-                                                runningRequestList: bloodData.runningBloodRequestModel!.requestList![index],
-                                                onTap: () {
-                                                  var body = {
-                                                    "request_id": bloodData.runningBloodRequestModel!.requestList![index].id,
-                                                    "request_by": bloodData.runningBloodRequestModel!.requestList![index].requestBy,
-                                                    "user": prefs!.getString('userId'),
-                                                    "donor_id": prefs!.getString('donorId'),
-                                                  };
-                                                  prefs!.getBool('guestLogIn') == true ? '' : bloodData.acceptRequest(context, body);
-
-                                                  // BloodRequestFunction.showRequestDialog(
-                                                  //   context,
-                                                  //   bloodData.runningBloodRequestModel!.requestList![index],
-                                                  // );
-                                                },
-                                              );
-                                      }),
+                                                }).toList()
+                                              : [],
+                                          index: index,
+                                          fromWhere: 'home',
+                                          runningRequestList: bloodData.runningBloodRequestModel!.requestList![index],
+                                          onTap: () {
+                                            Flushbar(
+                                                flushbarPosition: FlushbarPosition.BOTTOM,
+                                                isDismissible: false,
+                                                backgroundColor: AppColors.lime,
+                                                duration: const Duration(seconds: 3),
+                                                messageText: Text(
+                                                  "Please Login First",
+                                                  style: TextStyle(
+                                                    fontSize: 16.0,
+                                                    color: AppColors.darkGreen,
+                                                  ),
+                                                )).show(context);
+                                          },
+                                        )),
+                              ),
+                            )
+                          : bloodData.runningBloodRequestModel != null && bloodData.myResponseModel != null
+                              ? SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: Row(
+                                    children: List.generate(
+                                        bloodData.runningBloodRequestModel!.requestList!.length > 5
+                                            ? 5
+                                            : bloodData.runningBloodRequestModel!.requestList!.length,
+                                        (index) => RequestCardHome(
+                                              accepted: bloodData.myResponseModel != null
+                                                  ? bloodData.myResponseModel!.data!.where((e) {
+                                                      return e.requestId.toString() ==
+                                                          bloodData.runningBloodRequestModel!.requestList![index].id.toString();
+                                                    }).toList()
+                                                  : [],
+                                              index: index,
+                                              fromWhere: 'home',
+                                              runningRequestList: bloodData.runningBloodRequestModel!.requestList![index],
+                                              onTap: () {
+                                                Flushbar(
+                                                    flushbarPosition: FlushbarPosition.BOTTOM,
+                                                    isDismissible: false,
+                                                    backgroundColor: AppColors.lime,
+                                                    duration: const Duration(seconds: 3),
+                                                    messageText: Text(
+                                                      "Please Login First",
+                                                      style: TextStyle(
+                                                        fontSize: 16.0,
+                                                        color: AppColors.darkGreen,
+                                                      ),
+                                                    )).show(context);
+                                              },
+                                            )),
+                                  ),
                                 )
                               : Container();
                     }),

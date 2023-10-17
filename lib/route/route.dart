@@ -9,7 +9,7 @@ import 'package:blood_apps/pages/menu_pages/hospital_list.dart';
 import 'package:blood_apps/pages/profile/views/profile.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
-import '../authentication/signup_up/views/sign_up.dart';
+import '../authentication/sign_up/views/sign_up.dart';
 import '../languages/button.dart';
 import '../onbording/new_onbording.dart';
 import '../pages/blood_request/create_blood_request.dart';

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
+import '../../../ignore/private_info.dart';
 import '../models/TextModel.dart';
 import '../views/widgets/headers.dart';
 
@@ -63,7 +64,7 @@ class ChatTextController extends GetxController {
         // Uri.parse(endPoint("completions")),
         Uri.parse(endPoint("chat/completions")),
         body: encodedParams,
-        headers: headerBearerOption(OPEN_AI_KEY),
+        headers: headerBearerOption(openAIKey),
       );
       var b = json.decode(response.body);
       if (b['object'] == 'chat.completion') {

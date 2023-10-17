@@ -1,9 +1,6 @@
-const String OPEN_AI_KEY = "";
+import '../../../../helpers/urls.dart';
 
-// const String baseURL = "https://api.openai.com/v1";
-const String baseURL = "https://api.openai.com/v1";
-
-String endPoint(String endPoint) => "$baseURL/$endPoint";
+String endPoint(String endPoint) => "$openAIBaseURL/$endPoint";
 
 Map<String, String> headerBearerOption(String token) => {
       "Content-Type": "application/json",

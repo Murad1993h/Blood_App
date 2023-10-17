@@ -39,13 +39,28 @@ class _SplashScreenState extends State<SplashScreen> {
             body,
             requestAgain: true,
           );
+          loadData();
           Get.toNamed(landing);
         } else {
+          loadData();
           Get.toNamed(onbordings);
         }
       },
     );
+
     super.initState();
+  }
+
+  void loadData() async {
+    debugPrint('Load Data');
+    await profileController!.getAchievement();
+    await profileController!.getLocations();
+    await profileController!.getHospital();
+    await profileController!.getGroupList();
+    await profileController!.getUniversityList();
+    await profileController!.getUsers();
+
+    debugPrint('Load Data Complete');
   }
 
   @override
